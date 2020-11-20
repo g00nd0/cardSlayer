@@ -28,7 +28,8 @@ body {
 }
 
 .levelNum {
-    
+    text-align: center;
+    font-size: 40;
 }
 
 .healthBar {
