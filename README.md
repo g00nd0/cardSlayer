@@ -1,4 +1,4 @@
-# cardSlayer
+# CardSlayer
 Card Memory Game, but in Doom
 
 ## Content Page
@@ -25,7 +25,6 @@ Rip & tear until it's done. (Meaning reveal all card pairs)
 4. Some cards have power-ups that remove cards from screen, i.e. so less cards = end round in shorter time/kill demon faster. ( or penalty cards?, take away health)
 
 ## App
-![demo](demo.gif)
 
 ## Features
 
