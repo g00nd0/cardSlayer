@@ -1,14 +1,17 @@
 body {
     background-color: transparent;
+    /* background-image: url(../img/doom_bg.png); */
+    
 }
 
 .container {
     width: 1000px;
     height: 600px;
-    background-color: brown;
+    /* background-color: brown; */
     display: flex;
     flex-direction: column;
     color: white;
+    /* background-image: url(); */
 }
 
 .stats {
@@ -43,7 +46,9 @@ body {
 
 .main {
     height: 75%;
-    background-color: darkred;
+    /* background-color: darkred; */
+    background-color: transparent;
+    /* background-image: url(../img/doom_bg.png); */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -76,6 +81,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+.mugshot {
+    height: 250px;
 }
 
 .menu {
