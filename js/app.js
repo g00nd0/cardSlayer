@@ -32,7 +32,7 @@ const gameStatus = {
                     gameOverStatus: false
 }
 
-const setCardGrid = (cards) => {
+const setCardGrid = (cards) => {                    
     const $cardDisplay = $(".display");
     for (let i = 0; i< cards.length; i++){
         const $newCard = $('<div>').addClass('card');
