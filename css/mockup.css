@@ -72,11 +72,12 @@ body {
 }
 
 .card {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border: 1px solid grey;
     background-image: url(../img/card-blank-doomslayer-logo.png);
-    background-size: 100px;
+    background-size: 70px;
+    /* margin? */
     /* background-color: white; */
     display: inline-block;
     color: brown;

@@ -1,12 +1,13 @@
 const cardGrid = ["a","b","b","a"];
 
-const cardsAll = ["a","a","b","b","c","c","d","d",] // temp cards
+const cardsAll = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"] // temp cards
 
-const cardsInGame = ["a","a","b","b"]
+let cardsInGame = ["a","a","b","b","a","a","b","b","c","c","d","d","a","a","b","b","a","a","b","b","c","c","d","d","a","a","b","b","a","a","b","b","c","c","d","d","a","a","b","b","a","a","b","b","c","c","d","d","b","b","c","c","d","d","c","c","d","d","d","c","c","d","d"]
 
 let chosenCards = [];
 
-const gameLevelData = [{
+const gameLevelData = [
+                        {
                             "level": 0,
                             "numOfCards": 4,
                             "demon": "Zombie Soldier",
@@ -25,20 +26,19 @@ const gameLevelData = [{
                             "imgPath": ''
                             }];
 
-let gameOverStatus = false;
 
-
+const gameStatus = {
+                    currentLevel: 0,
+                    gameOverStatus: false
+}
 
 const setCardGrid = (cards) => {
     const $cardDisplay = $(".display");
     for (let i = 0; i< cards.length; i++){
-        const $newCard = $('<div>').addClass('card').text("card");
-        $newCard.css("width",100)
+        const $newCard = $('<div>').addClass('card');
         $cardDisplay.append($newCard)
         
     }
-
-    console.log("this runs")
 }
 
 const cardArrayShuffle = (arr) => {
@@ -52,14 +52,34 @@ const cardArrayShuffle = (arr) => {
     return arr;
 }
 
-
-const userChoice = (x,y) => {
-    if (cardGrid[x] === cardGrid[y]) {
-        console.log("you guessed correctly")
-    } else {
-        console.log("nope")
+const setDifficulty = (gameData, status) => {
+    const level = status.currentLevel;                 // get current level of game
+    const setLevel = gameData[level];                     //  select level data from current level (i.e. num of cards)
+    let newCards = []; 
+   
+    for (let i = 0; i < (setLevel.numOfCards/2); i++) {    // new cards in temp array
+        newCards[i] = cardsAll[i];
     }
+
+    newCards = newCards.concat(newCards);           // each card will have a copy of itself
+    cardsInGame = cardArrayShuffle(newCards);       // shuffle order of new cards and save to cardsInGame
 }
+
+// const nextLevel = () => {
+
+// }
+
+// const userChoice = (x,y) => {
+//     if (cardGrid[x] === cardGrid[y]) {
+//         console.log("you guessed correctly")
+//     } else {
+//         console.log("nope")
+//     }
+// }
+
+
+
+
 
 // const flipCard = () => {
     
@@ -85,17 +105,23 @@ const render = () => {
     
 }
 
-// setCardGrid(cardsInGame);
+// // setCardGrid(cardsInGame);
 
-userChoice(0,3)
-
-console.log(cardArrayShuffle(cardsInGame));
-console.log(cardsInGame)
 
 $(() => {
     //  setup();
     render();
 });
+
+
+// test parameters for fns:
+//userChoice(0,3)
+// console.log(cardArrayShuffle(cardsInGame));
+// console.log(cardsInGame)
+// gameStatus.currentLevel = 2;
+// setDifficulty(gameLevelData, gameStatus);
+// console.log(cardsInGame);
+
 
 // fn for: 
 // cardArrayShuffle() // shuffles positions of the cards [DONE]
@@ -105,7 +131,7 @@ $(() => {
 // flipCard() // flip card to front or back when user chooses card, or when both cards revealed
 // createGrid // need to dynamically create card grid in CSS
 
-
+// test if jQuery is linked correctly
 // if (typeof $ == 'undefined'){
 //   console.log('oops! I still have to link my jQuery properly!');
 // } else {console.log('I did it! I linked jQuery and this js file properly!')};
