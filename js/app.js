@@ -65,9 +65,9 @@ const setDifficulty = (gameData, status) => {
     cardsInGame = cardArrayShuffle(newCards);       // shuffle order of new cards and save to cardsInGame
 }
 
-// const nextLevel = () => {
-
-// }
+const nextLevel = () => {
+    gameStatus.currentLevel++;
+}
 
 // const userChoice = (x,y) => {
 //     if (cardGrid[x] === cardGrid[y]) {
@@ -118,7 +118,7 @@ $(() => {
 //userChoice(0,3)
 // console.log(cardArrayShuffle(cardsInGame));
 // console.log(cardsInGame)
-// gameStatus.currentLevel = 2;
+// nextLevel();
 // setDifficulty(gameLevelData, gameStatus);
 // console.log(cardsInGame);
 
