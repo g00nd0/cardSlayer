@@ -27,18 +27,19 @@ const gameLevelData = [{
 
 let gameOverStatus = false;
 
-// const $cardDisplay = $(".display");
 
-// const setCardGrid = (cards) => {
-    
-//     for (let i = 0; i< cards.length; i++){
-//         const $newCard = $('<div>').addClass('card');
-//         $cardDisplay.append($newCard)
+
+const setCardGrid = (cards) => {
+    const $cardDisplay = $(".display");
+    for (let i = 0; i< cards.length; i++){
+        const $newCard = $('<div>').addClass('card').text("card");
+        $newCard.css("width",100)
+        $cardDisplay.append($newCard)
         
-//     }
+    }
 
-//     console.log("this runs")
-// }
+    console.log("this runs")
+}
 
 const cardArrayShuffle = (arr) => {
     let index, newIndex, tempCard;
@@ -78,10 +79,11 @@ const userChoice = (x,y) => {
 //     // $quit.on("click", quit);
 // }
 
-// const render = () => {
-//     // $cardsRemain.text(numOfCards)
+const render = () => {
+    // $cardsRemain.text(numOfCards)
+        setCardGrid(cardsInGame);
     
-// }
+}
 
 // setCardGrid(cardsInGame);
 
@@ -90,10 +92,10 @@ userChoice(0,3)
 console.log(cardArrayShuffle(cardsInGame));
 console.log(cardsInGame)
 
-// $(() => {
-//     // run function here
-//     setCardGrid(cardsInGame);
-// });
+$(() => {
+    //  setup();
+    render();
+});
 
 // fn for: 
 // cardArrayShuffle() // shuffles positions of the cards [DONE]
