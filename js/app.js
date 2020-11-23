@@ -1,8 +1,26 @@
-const cardGrid = ["a","b","b","a"];
+const cardTest = ["a","b","c","d"];
 
-const cardsAll = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"] // temp cards
+const cardsAll = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5"] // temp cards
 
-let cardsInGame = ["a","a","b","b","a","a","b","b","c","c","d","d","a","a","b","b","a","a","b","b","c","c","d","d","a","a","b","b","a","a","b","b","c","c","d","d","a","a","b","b","a","a","b","b","c","c","d","d","b","b","c","c","d","d","c","c","d","d","d","c","c","d","d"]
+// const cardsAll = [
+//                     {
+//                         id: "",
+//                         name: "",
+//                     },
+//                     {
+//                         id: "",
+//                         name: "",
+//                     },
+// ]
+
+// create object for cards instead
+// use following attributes:
+// id: (id of the card for html)
+// name: (text name for diplaying card)
+// imgPath: (path of image)
+// specialFx: (for card power ups later in game)
+
+let cardsInGame = [];
 
 let chosenCards = [];
 
@@ -22,9 +40,63 @@ const gameLevelData = [
                         {
                             "level": 2,
                             "numOfCards": 8,
-                            "demon": "Zombie Sergeant",
+                            "demon": "Imp",
                             "imgPath": ''
-                            }];
+                        },
+                        {
+                            "level": 3,
+                            "numOfCards": 12,
+                            "demon": "Lost Soul",
+                            "imgPath": ''
+                        },
+                        {
+                            "level": 4,
+                            "numOfCards": 16,
+                            "demon": "Demon AKA Pinky",
+                            "imgPath": ''
+                        },
+                        {
+                            "level": 5,
+                            "numOfCards": 20,
+                            "demon": "Revenant",
+                            "imgPath": ''
+                        },
+                        {
+                            "level": 6,
+                            "numOfCards": 25,
+                            "demon": "Cacodemon",
+                            "imgPath": ''
+                        },
+                        {
+                            "level": 7,
+                            "numOfCards": 30,
+                            "demon": "Pain Elemental",
+                            "imgPath": ''
+                        },
+                        {
+                            "level": 8,
+                            "numOfCards": 36,
+                            "demon": "Mancubus",
+                            "imgPath": ''
+                        },
+                        {
+                            "level": 9,
+                            "numOfCards": 40,
+                            "demon": "Baron of Hell",
+                            "imgPath": ''
+                        },
+                        {
+                            "level": 10,
+                            "numOfCards": 49,
+                            "demon": "Spiderdemon",
+                            "imgPath": ''
+                        },
+                        {
+                            "level": 11,
+                            "numOfCards": 64,
+                            "demon": "Cyberdemon",
+                            "imgPath": ''
+                        }];
 
 
 const gameStatus = {
@@ -35,7 +107,7 @@ const gameStatus = {
 const setCardGrid = (cards) => {                    
     const $cardDisplay = $(".display");
     for (let i = 0; i< cards.length; i++){
-        const $newCard = $('<div>').addClass('card');
+        const $newCard = $('<div>').addClass('card').attr("id",i);
         $cardDisplay.append($newCard)
         
     }
@@ -69,20 +141,26 @@ const nextLevel = () => {
     gameStatus.currentLevel++;
 }
 
+const flipCard = (id) => {
+    const idNum = "#" + id;
+    const $chooseCard = $(idNum);
+    //select card's data, and image
+    $chooseCard.css("background-image","url(img/soulsphere.gif)");
+    
+//     if (chosenCards.length === 0){
+//      // add card to chosenCards[0]
+//  } else {
+//      // add card to chosenCards[0]
+//      // run cardsChosenMatch()
+//  }
+}
+
 // const userChoice = (x,y) => {
 //     if (cardGrid[x] === cardGrid[y]) {
 //         console.log("you guessed correctly")
 //     } else {
 //         console.log("nope")
 //     }
-// }
-
-
-
-
-
-// const flipCard = () => {
-    
 // }
 
 // const cardsChosenMatch = (chosenCards) => {
@@ -99,9 +177,16 @@ const nextLevel = () => {
 //     // $quit.on("click", quit);
 // }
 
+const setup = () => {
+    $(".display").children().on("click", () => {
+        flipCard(event.target.id);
+        console.log(event.target.id)
+    });
+}
+
 const render = () => {
     // $cardsRemain.text(numOfCards)
-        setCardGrid(cardsInGame);
+    //    setCardGrid(cardsInGame);
     
 }
 
@@ -109,8 +194,8 @@ const render = () => {
 
 
 $(() => {
-    //  setup();
-    render();
+     setup();
+    // render();
 });
 
 
