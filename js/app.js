@@ -1,17 +1,23 @@
 const cardTest = ["a","b","c","d"];
 
-const cardsAll = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5"] // temp cards
-
-// const cardsAll = [
-//                     {
-//                         id: "",
-//                         name: "",
-//                     },
-//                     {
-//                         id: "",
-//                         name: "",
-//                     },
-// ]
+const cardsAll = [
+                    {
+                        id: "cannotDie",
+                        imgPath: "img/cannotDie.gif"
+                    },
+                    {
+                        id: "soulsphere",
+                        imgPath: "img/soulsphere.gif"
+                    },
+                    {
+                        id: "invisible",
+                        imgPath: "img/invisible.gif"
+                    },
+                    {
+                        id: "iconOfSin",
+                        imgPath: "img/iconOfSin.png"
+                    }
+]
 
 // create object for cards instead
 // use following attributes:
@@ -23,6 +29,9 @@ const cardsAll = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p
 let cardsInGame = [];
 
 let chosenCards = [];
+let chosenIndex = [];
+
+let numOfChosen = 0;
 
 const gameLevelData = [
                         {
@@ -104,26 +113,6 @@ const gameStatus = {
                     gameOverStatus: false
 }
 
-const setCardGrid = (cards) => {                    
-    const $cardDisplay = $(".display");
-    for (let i = 0; i< cards.length; i++){
-        const $newCard = $('<div>').addClass('card').attr("id",i);
-        $cardDisplay.append($newCard)
-        
-    }
-}
-
-const cardArrayShuffle = (arr) => {
-    let index, newIndex, tempCard;
-    for (let i = 0; i < arr.length; i++) {
-        index = Math.floor(Math.random() * arr.length);
-        tempCard = arr.splice(index, 1);
-        newIndex = Math.floor(Math.random() * arr.length)
-        arr.splice(newIndex, 0, tempCard[0]);
-    }
-    return arr;
-}
-
 const setDifficulty = (gameData, status) => {
     const level = status.currentLevel;                 // get current level of game
     const setLevel = gameData[level];                     //  select level data from current level (i.e. num of cards)
@@ -137,22 +126,101 @@ const setDifficulty = (gameData, status) => {
     cardsInGame = cardArrayShuffle(newCards);       // shuffle order of new cards and save to cardsInGame
 }
 
+const cardArrayShuffle = (arr) => {
+    let index, newIndex, tempCard;
+    for (let i = 0; i < arr.length; i++) {
+        index = Math.floor(Math.random() * arr.length);
+        tempCard = arr.splice(index, 1);
+        newIndex = Math.floor(Math.random() * arr.length)
+        arr.splice(newIndex, 0, tempCard[0]);
+    }
+    return arr;
+}
+
+const setCardGrid = (cards) => {                    //takes in cardsInGame  
+    const $cardDisplay = $(".display");
+    for (let i = 0; i< cards.length; i++){          //renders the number of cards equal to the size of cardsInGame
+        const cardTitle = cards[i].id
+        const $newCard = $('<div>').addClass('card').attr("id",i).attr("alt",cardTitle);
+        $cardDisplay.append($newCard);
+        console.log(cardTitle)
+    }
+    
+    
+}
+
 const nextLevel = () => {
     gameStatus.currentLevel++;
 }
 
 const flipCard = (id) => {
-    const idNum = "#" + id;
-    const $chooseCard = $(idNum);
-    //select card's data, and image
-    $chooseCard.css("background-image","url(img/soulsphere.gif)");
+    const idNum = "#" + id;         // id given in HTML tag
+    const $chooseCard = $(idNum);   
+    const cardName = $chooseCard.attr("alt"); // get the alt attr in given id's HTML tag
+    let imgPath = "url(pathHere)";  // set imgPath as the path of the card image
+    let whichCard;                  // refers to the card object from cardsAll array
+
+    for ( let i = 0; i < cardsAll.length; i++) {
+        if ( cardName === cardsAll[i].id ) {
+            imgPath = imgPath.replace("pathHere", cardsAll[i].imgPath);
+            whichCard = cardsAll[i];
+        }
+    }
+    $chooseCard.css("background-image",imgPath);
     
-//     if (chosenCards.length === 0){
-//      // add card to chosenCards[0]
-//  } else {
-//      // add card to chosenCards[0]
-//      // run cardsChosenMatch()
-//  }
+    if (chosenCards.length === 0){
+        chosenCards[0] = whichCard;
+        chosenIndex[0] = idNum;
+    } else {
+        chosenCards[1] = whichCard;
+        chosenIndex[1] = idNum;
+        cardsChosenMatch();
+        //flipReset();
+        
+     
+ }
+}
+
+const cardsChosenMatch = () => {
+    if (chosenCards[0] === chosenCards[1]) {
+        cardsWon();
+    } else {
+        flipReset();
+    }
+    
+}
+
+const flipReset = () => {
+    setTimeout(() => {
+        $(".card").css("background-image","url(img/card-blank-doomslayer-logo.png)");
+        
+    }, 500)
+    chosenCards = [];
+    
+    
+}
+
+const cardsWon = () => {
+    $(chosenIndex[0]).css("background-image","url(img/winFace.png)");
+    $(chosenIndex[1]).css("background-image","url(img/winFace.png)");
+    setTimeout(() => {
+        $(chosenIndex[0]).remove();
+        $(chosenIndex[1]).remove();
+    }, 500);
+
+    chosenCards = [];
+
+    // for (let i = 0; i < chosenIndex; i++) {
+
+    //     $(chosenIndex[i]).css("background-image","url(img/winFace.png)");
+    //     console.log(chosenIndex[i]);
+    //     // setTimeout(() => {
+        
+    //     //     $(chosenIndex[i]).css("background-image","url(img/winFace.png)");
+            
+    //     // }, 500)
+    // }
+
 }
 
 // const userChoice = (x,y) => {
@@ -163,14 +231,6 @@ const flipCard = (id) => {
 //     }
 // }
 
-// const cardsChosenMatch = (chosenCards) => {
-//     if (chosenCards[0] === chosenCards[1]) {
-//         // for loop x 2 loops, 
-//         // $cardsDisplay.remove(cardChosen)
-//     }
-    
-// }
-
 // const setup = () => {
 //     // $cardDisplay.on("click", flipCard()); to flip card when user clicks
 //     // $instructions.on("click", showInstructions);
@@ -178,6 +238,9 @@ const flipCard = (id) => {
 // }
 
 const setup = () => {
+    setDifficulty(gameLevelData,gameStatus)
+    setCardGrid(cardsInGame);
+    
     $(".display").children().on("click", () => {
         flipCard(event.target.id);
         console.log(event.target.id)
@@ -186,16 +249,18 @@ const setup = () => {
 
 const render = () => {
     // $cardsRemain.text(numOfCards)
-    //    setCardGrid(cardsInGame);
+    // setDifficulty(gameLevelData,gameStatus)
+    // setCardGrid(cardsInGame);
+    
     
 }
 
-// // setCardGrid(cardsInGame);
+
 
 
 $(() => {
-     setup();
-    // render();
+    setup();
+    render();
 });
 
 
@@ -220,6 +285,3 @@ $(() => {
 // if (typeof $ == 'undefined'){
 //   console.log('oops! I still have to link my jQuery properly!');
 // } else {console.log('I did it! I linked jQuery and this js file properly!')};
-
-
-
