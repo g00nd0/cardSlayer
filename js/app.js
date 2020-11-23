@@ -27,7 +27,6 @@ const cardsAll = [
 // specialFx: (for card power ups later in game)
 
 let cardsInGame = [];
-
 let chosenCards = [];
 let chosenIndex = [];
 
@@ -151,9 +150,14 @@ const setCardGrid = (cards) => {                    //takes in cardsInGame
 
 const nextLevel = () => {
     gameStatus.currentLevel++;
-    const numCardsLeft = $(".display").children().length;
     setDifficulty(gameLevelData,gameStatus)
     setCardGrid(cardsInGame);
+    $(".display").children().on("click", () => {
+        flipCard(event.target.id);
+        console.log(event.target.id)
+        
+    });
+    console.log('this runs')
 }
 
 const flipCard = (id) => {
@@ -177,11 +181,9 @@ const flipCard = (id) => {
     } else {
         chosenCards[1] = whichCard;
         chosenIndex[1] = idNum;
-        cardsChosenMatch();
-        //flipReset();
-        
-     
- }
+        cardsChosenMatch(); 
+    }
+    
 }
 
 const cardsChosenMatch = () => {
@@ -190,7 +192,6 @@ const cardsChosenMatch = () => {
     } else {
         flipReset();
     }
-    
 }
 
 const flipReset = () => {
@@ -199,8 +200,6 @@ const flipReset = () => {
         
     }, 500)
     chosenCards = [];
-    
-    
 }
 
 const cardsWon = () => {
@@ -210,23 +209,23 @@ const cardsWon = () => {
         }
     }, 500)
     
-    
     setTimeout(() => {              //after 1000ms, remove won cards
         $(chosenIndex[0]).remove();
         $(chosenIndex[1]).remove();
+        console.log("in timeout, there are "+ updateCardsRemain());
+
+        if(updateCardsRemain() === 0) {
+            nextLevel();
+        }
     }, 1000);
 
     chosenCards = [];
-
 }
 
-// const userChoice = (x,y) => {
-//     if (cardGrid[x] === cardGrid[y]) {
-//         console.log("you guessed correctly")
-//     } else {
-//         console.log("nope")
-//     }
-// }
+const updateCardsRemain = () => {
+    const numCardsLeft = $(".display").children().length;
+    return numCardsLeft;
+}
 
 // const setup = () => {
 //     // $cardDisplay.on("click", flipCard()); to flip card when user clicks
@@ -238,26 +237,18 @@ const setup = () => {
     setDifficulty(gameLevelData,gameStatus)
     setCardGrid(cardsInGame);
 
-    const numCardsLeft = $(".display").children().length;
+    let numCardsLeft = $(".display").children().length;
     
     $(".display").children().on("click", () => {
         flipCard(event.target.id);
         console.log(event.target.id)
         
-        
     });
-
-    //game win page, have button to go next level?
-
-    // if (numCardsLeft === 0) {
-    //     nextLevel();
-    // }
-
 }
 
 const render = () => {
     const numCardsLeft = $(".display").children().length;
-    console.log(numCardsLeft);
+    // console.log(numCardsLeft);
 
     // while(gameStatus.gameOverStatus === false) {
     //     if (numCardsLeft === 0){
@@ -291,12 +282,12 @@ $(() => {
 
 
 // fn for: 
-// cardArrayShuffle() // shuffles positions of the cards [DONE]
-// cardsInGame() // chosen cards arranged in array
-// cardsChosen() // 2 element array for user to choose 2 cards, clear cards after match/no match
+// [DONE] cardArrayShuffle() // shuffles positions of the cards 
+// [DONE] cardsInGame() // chosen cards arranged in array
+// [DONE] cardsChosen() // 2 element array for user to choose 2 cards, clear cards after match/no match
 // cardsPaired() // cards won/paired are stored here
-// flipCard() // flip card to front or back when user chooses card, or when both cards revealed
-// createGrid // need to dynamically create card grid in CSS
+// [DONE] flipCard() // flip card to front or back when user chooses card, or when both cards revealed
+// [DONE] createGrid // need to dynamically create card grid in CSS
 
 // test if jQuery is linked correctly
 // if (typeof $ == 'undefined'){
