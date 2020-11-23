@@ -151,6 +151,9 @@ const setCardGrid = (cards) => {                    //takes in cardsInGame
 
 const nextLevel = () => {
     gameStatus.currentLevel++;
+    const numCardsLeft = $(".display").children().length;
+    setDifficulty(gameLevelData,gameStatus)
+    setCardGrid(cardsInGame);
 }
 
 const flipCard = (id) => {
@@ -201,25 +204,19 @@ const flipReset = () => {
 }
 
 const cardsWon = () => {
-    $(chosenIndex[0]).css("background-image","url(img/winFace.png)");
-    $(chosenIndex[1]).css("background-image","url(img/winFace.png)");
-    setTimeout(() => {
+    setTimeout(() => {              // after 500ms, change face to game win face img
+        for (let i = 0; i < chosenIndex.length; i++) {
+            $(chosenIndex[i]).css("background-image","url(img/winFace.png)");
+        }
+    }, 500)
+    
+    
+    setTimeout(() => {              //after 1000ms, remove won cards
         $(chosenIndex[0]).remove();
         $(chosenIndex[1]).remove();
-    }, 500);
+    }, 1000);
 
     chosenCards = [];
-
-    // for (let i = 0; i < chosenIndex; i++) {
-
-    //     $(chosenIndex[i]).css("background-image","url(img/winFace.png)");
-    //     console.log(chosenIndex[i]);
-    //     // setTimeout(() => {
-        
-    //     //     $(chosenIndex[i]).css("background-image","url(img/winFace.png)");
-            
-    //     // }, 500)
-    // }
 
 }
 
@@ -240,23 +237,43 @@ const cardsWon = () => {
 const setup = () => {
     setDifficulty(gameLevelData,gameStatus)
     setCardGrid(cardsInGame);
+
+    const numCardsLeft = $(".display").children().length;
     
     $(".display").children().on("click", () => {
         flipCard(event.target.id);
         console.log(event.target.id)
+        
+        
     });
+
+    //game win page, have button to go next level?
+
+    // if (numCardsLeft === 0) {
+    //     nextLevel();
+    // }
+
 }
 
 const render = () => {
+    const numCardsLeft = $(".display").children().length;
+    console.log(numCardsLeft);
+
+    // while(gameStatus.gameOverStatus === false) {
+    //     if (numCardsLeft === 0){
+    //         nextLevel();
+    //     }
+    // }
+
+    // if (numCardsLeft === 0) {
+    //     nextLevel();
+    //     setDifficulty(gameLevelData,gameStatus)
+    //     setCardGrid(cardsInGame);
+    // }
     // $cardsRemain.text(numOfCards)
     // setDifficulty(gameLevelData,gameStatus)
-    // setCardGrid(cardsInGame);
-    
-    
+    // setCardGrid(cardsInGame);    
 }
-
-
-
 
 $(() => {
     setup();
