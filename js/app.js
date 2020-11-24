@@ -1,5 +1,9 @@
 const cardTest = ["a","b","c","d"];
 
+// const cardsAll = require('./cardData.js');
+
+// import { cardsAll } from './cardData/cardData.js';
+
 const cardsAll = [
                     {
                         id: "cannotDie",
@@ -16,6 +20,114 @@ const cardsAll = [
                     {
                         id: "iconOfSin",
                         imgPath: "img/iconOfSin.png"
+                    },
+                    {
+                        id: "monster4",
+                        imgPath: "img/cannotDie.gif"
+                    },
+                    {
+                        id: "monster5",
+                        imgPath: "img/soulsphere.gif"
+                    },
+                    {
+                        id: "monster6",
+                        imgPath: "img/invisible.gif"
+                    },
+                    {
+                        id: "monster7",
+                        imgPath: "img/iconOfSin.png"
+                    },
+                    {
+                        id: "monster8",
+                        imgPath: "img/cannotDie.gif"
+                    },
+                    {
+                        id: "monster9",
+                        imgPath: "img/soulsphere.gif"
+                    },
+                    {
+                        id: "monster10",
+                        imgPath: "img/invisible.gif"
+                    },
+                    {
+                        id: "monster11",
+                        imgPath: "img/iconOfSin.png"
+                    },
+                    {
+                        id: "monster12",
+                        imgPath: "img/cannotDie.gif"
+                    },
+                    {
+                        id: "monster13",
+                        imgPath: "img/soulsphere.gif"
+                    },
+                    {
+                        id: "monster14",
+                        imgPath: "img/invisible.gif"
+                    },
+                    {
+                        id: "monster15",
+                        imgPath: "img/iconOfSin.png"
+                    },
+                    {
+                        id: "monster16",
+                        imgPath: "img/cannotDie.gif"
+                    },
+                    {
+                        id: "monster17",
+                        imgPath: "img/soulsphere.gif"
+                    },
+                    {
+                        id: "monster18",
+                        imgPath: "img/invisible.gif"
+                    },
+                    {
+                        id: "monster19",
+                        imgPath: "img/iconOfSin.png"
+                    },
+                    {
+                        id: "monster20",
+                        imgPath: "img/cannotDie.gif"
+                    },
+                    {
+                        id: "monster21",
+                        imgPath: "img/soulsphere.gif"
+                    },
+                    {
+                        id: "monster22",
+                        imgPath: "img/invisible.gif"
+                    },
+                    {
+                        id: "monster23",
+                        imgPath: "img/iconOfSin.png"
+                    },
+                    {
+                        id: "monster24",
+                        imgPath: "img/cannotDie.gif"
+                    },
+                    {
+                        id: "monster25",
+                        imgPath: "img/soulsphere.gif"
+                    },
+                    {
+                        id: "monster26",
+                        imgPath: "img/invisible.gif"
+                    },
+                    {
+                        id: "monster27",
+                        imgPath: "img/iconOfSin.png"
+                    },
+                    {
+                        id: "monster28",
+                        imgPath: "img/cannotDie.gif"
+                    },
+                    {
+                        id: "monster29",
+                        imgPath: "img/soulsphere.gif"
+                    },
+                    {
+                        id: "monster30",
+                        imgPath: "img/invisible.gif"
                     }
 ]
 
@@ -116,6 +228,7 @@ const setDifficulty = (gameData, status) => {
     const level = status.currentLevel;                 // get current level of game
     const setLevel = gameData[level];                     //  select level data from current level (i.e. num of cards)
     let newCards = []; 
+    
    
     for (let i = 0; i < (setLevel.numOfCards/2); i++) {    // new cards in temp array
         newCards[i] = cardsAll[i];
