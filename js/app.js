@@ -1,9 +1,5 @@
 const cardTest = ["a","b","c","d"];
 
-// const cardsAll = require('./cardData.js');
-
-// import { cardsAll } from './cardData/cardData.js';
-
 const cardsAll = [
                     {
                         id: "cannotDie",
@@ -239,17 +235,18 @@ const setDifficulty = (gameData, status) => {
 
     newCards = newCards.concat(newCards);           // each card will have a copy of itself
     cardsInGame = cardArrayShuffle(newCards);       // shuffle order of new cards and save to cardsInGame
+    
 }
 
-const cardArrayShuffle = (arr) => {
+const cardArrayShuffle = (cardsOnGrid) => {
     let index, newIndex, tempCard;
-    for (let i = 0; i < arr.length; i++) {
-        index = Math.floor(Math.random() * arr.length);
-        tempCard = arr.splice(index, 1);
-        newIndex = Math.floor(Math.random() * arr.length)
-        arr.splice(newIndex, 0, tempCard[0]);
+    for (let i = 0; i < cardsOnGrid.length; i++) {
+        index = Math.floor(Math.random() * cardsOnGrid.length);
+        tempCard = cardsOnGrid.splice(index, 1);
+        newIndex = Math.floor(Math.random() * cardsOnGrid.length)
+        cardsOnGrid.splice(newIndex, 0, tempCard[0]);
     }
-    return arr;
+    return cardsOnGrid;
 }
 
 const setCardGrid = (cards) => {                    //takes in cardsInGame  
@@ -258,7 +255,6 @@ const setCardGrid = (cards) => {                    //takes in cardsInGame
         const cardTitle = cards[i].id
         const $newCard = $('<div>').addClass('card').attr("id",i).attr("alt",cardTitle);
         $cardDisplay.append($newCard);
-        console.log(cardTitle)
     }
     
     
@@ -268,11 +264,8 @@ const nextLevel = () => {
     gameStatus.currentLevel++;
     setDifficulty(gameLevelData,gameStatus)
     setCardGrid(cardsInGame);
-    $(".display").children().on("click", () => {
-        flipCard(event.target.id);
-        console.log(event.target.id)
-        
-    });
+    setEventFlipCard();
+    
     console.log('this runs')
 }
 
@@ -280,18 +273,20 @@ const flipCard = (id) => {
     const idNum = "#" + id;         // id given in HTML tag
     const $chooseCard = $(idNum);   
     const cardName = $chooseCard.attr("alt"); // get the alt attr in given id's HTML tag
-    let imgPath = "url(pathHere)";  // set imgPath as the path of the card image
+    let imgPath;  // set imgPath as the path of the card image
     let whichCard;                  // refers to the card object from cardsAll array
+
+    // "url(" + cardsAll[i].imgPath + ")"
 
     for ( let i = 0; i < cardsAll.length; i++) {
         if ( cardName === cardsAll[i].id ) {
-            imgPath = imgPath.replace("pathHere", cardsAll[i].imgPath);
+            imgPath = "url(" + cardsAll[i].imgPath + ")";
             whichCard = cardsAll[i];
         }
     }
     $chooseCard.css("background-image",imgPath);
-    
-    if (chosenCards.length === 0){
+    const isFirstCard = (chosenCards.length === 0);
+    if (isFirstCard){
         chosenCards[0] = whichCard;
         chosenIndex[0] = idNum;
     } else {
@@ -306,11 +301,11 @@ const cardsChosenMatch = () => {
     if (chosenCards[0] === chosenCards[1]) {
         cardsWon();
     } else {
-        flipReset();
+        flipCardReset();
     }
 }
 
-const flipReset = () => {
+const flipCardReset = () => {
     setTimeout(() => {
         $(".card").css("background-image","url(img/card-blank-doomslayer-logo.png)");
         
@@ -331,9 +326,11 @@ const cardsWon = () => {
         $(chosenIndex[0]).remove();
         $(chosenIndex[1]).remove();
         console.log("in timeout, there are "+ updateCardsRemain());
+        $('.cardsRemain').children('span').text(updateCardsRemain());
 
         if(updateCardsRemain() === 0) {
             nextLevel();
+            
         }
     }, 1000);
 
@@ -341,7 +338,7 @@ const cardsWon = () => {
 }
 
 const endGameCheck = () => {
-    if (health === 0) {
+    if (health <= 0) {
         gameStatus.gameOverStatus = true; // need an end game page
     }
 
@@ -352,12 +349,33 @@ const updateCardsRemain = () => {
     return numCardsLeft;
 }
 
+// const lessPlayerHealth = () => {
+//     const $healthBar = $(".healthBar");
+//     const level = gameStatus.currentLevel;
+//     if (level === 0) {
+//         level = 1;
+//     }
+//     const lessMultiplier = level 
+//     health -= 20 * lessMultiplier;
+//     $healthBar.text(health + "%");
+// }
+
 const lessPlayerHealth = () => {
     const $healthBar = $(".healthBar");
     health -= 20;
     $healthBar.text(health + "%");
 }
 
+const setEventFlipCard = () => {
+    $(".display").children().on("click", () => {
+        flipCard(event.target.id);
+        // console.log(event.target.id)
+        if (gameStatus.gameOverStatus === true){
+            console.log("you lose")
+        }
+        
+    });
+}
 // const setup = () => {
 //     // $cardDisplay.on("click", flipCard()); to flip card when user clicks
 //     // $instructions.on("click", showInstructions);
@@ -367,15 +385,17 @@ const lessPlayerHealth = () => {
 const setup = () => {
     setDifficulty(gameLevelData,gameStatus)
     setCardGrid(cardsInGame);
+    setEventFlipCard();   
+    // updateCardsRemain();
+     
+    // $(".display").children().on("click", () => {
+    //     flipCard(event.target.id);
+    //     // console.log(event.target.id)
+    //     if (gameStatus.gameOverStatus === true){
+    //         console.log("you lose")
+    //     }
         
-    $(".display").children().on("click", () => {
-        flipCard(event.target.id);
-        // console.log(event.target.id)
-        if (gameStatus.gameOverStatus === true){
-            console.log("you lose")
-        }
-        
-    });
+    // });
 
 }
 
