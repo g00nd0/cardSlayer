@@ -349,20 +349,11 @@ const updateCardsRemain = () => {
     return numCardsLeft;
 }
 
-// const lessPlayerHealth = () => {
-//     const $healthBar = $(".healthBar");
-//     const level = gameStatus.currentLevel;
-//     if (level === 0) {
-//         level = 1;
-//     }
-//     const lessMultiplier = level 
-//     health -= 20 * lessMultiplier;
-//     $healthBar.text(health + "%");
-// }
-
 const lessPlayerHealth = () => {
     const $healthBar = $(".healthBar");
-    health -= 20;
+    const currentLevel = gameStatus.currentLevel;
+    const lessMultiplier = gameLevelData[currentLevel].numOfCards;
+    health -= Math.round(100 / lessMultiplier);
     $healthBar.text(health + "%");
 }
 
