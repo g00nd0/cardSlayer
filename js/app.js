@@ -132,12 +132,6 @@ const cardsAll = [
 // imgPath: (path of image)
 // specialFx: (for card power ups later in game)
 
-//let cardsInGame = [];
-//let chosenCards = [];
-//let chosenIndex = [];
-// let health = 100;
-let numOfChosen = 0;
-
 const gameLevelData = [
                         {
                             "level": 0,
@@ -220,7 +214,6 @@ const gameStatus = {
                     chosenCards: [],
                     chosenIndex: [],
                     health: 100
-                    // numOfChosen: 0
                     
 }
 
@@ -260,12 +253,19 @@ const setCardGrid = (cards) => {                    //takes in cardsInGame
     }
     
 }
-
-const nextLevel = () => {
-    gameStatus.currentLevel++;
+const setNewLevel = () => {
     setDifficulty(gameLevelData,gameStatus)
     setCardGrid(gameStatus.cardsInGame);
     setEventFlipCard();
+    updateCardsRemain();
+}
+
+const nextLevel = () => {
+    gameStatus.currentLevel++;
+    setNewLevel();
+    // setDifficulty(gameLevelData,gameStatus)
+    // setCardGrid(gameStatus.cardsInGame);
+    // setEventFlipCard();
     
     console.log('this runs')
 }
@@ -350,6 +350,7 @@ const endGameCheck = () => {
 
 const updateCardsRemain = () => {
     const numCardsLeft = $(".display").children().length;
+    $(".cardsRemain > span").text(numCardsLeft);
     return numCardsLeft;
 }
 
@@ -386,21 +387,9 @@ const startGameButton = () => {
 }
 
 const setup = () => {
-    setDifficulty(gameLevelData,gameStatus)
-    setCardGrid(gameStatus.cardsInGame);
     startGameButton();
-    setEventFlipCard();   
+    setNewLevel();  
     // updateCardsRemain();
-     
-    // $(".display").children().on("click", () => {
-    //     flipCard(event.target.id);
-    //     // console.log(event.target.id)
-    //     if (gameStatus.gameOverStatus === true){
-    //         console.log("you lose")
-    //     }
-        
-    // });
-
 }
 
 const render = () => {
