@@ -136,19 +136,19 @@ const gameLevelData = [
                         {
                             "level": 0,
                             "numOfCards": 4,
-                            "demon": "Zombie Soldier",
+                            "demon": "Lesser Zombie",
                             "imgPath": ''
                         },
                         {
                             "level": 1,
                             "numOfCards": 6,
-                            "demon": "Zombie Sergeant",
+                            "demon": "Zombie",
                             "imgPath": ''
                         },
                         {
                             "level": 2,
                             "numOfCards": 8,
-                            "demon": "Imp",
+                            "demon": "Bigger, Uglier Zombie",
                             "imgPath": ''
                         },
                         {
@@ -160,13 +160,13 @@ const gameLevelData = [
                         {
                             "level": 4,
                             "numOfCards": 16,
-                            "demon": "Demon AKA Pinky",
+                            "demon": "Restless Spirit",
                             "imgPath": ''
                         },
                         {
                             "level": 5,
                             "numOfCards": 20,
-                            "demon": "Revenant",
+                            "demon": "Hungry Ghost",
                             "imgPath": ''
                         },
                         {
@@ -202,7 +202,7 @@ const gameLevelData = [
                         {
                             "level": 11,
                             "numOfCards": 64,
-                            "demon": "Cyberdemon",
+                            "demon": "Satan Himself",
                             "imgPath": ''
                         }];
 
@@ -258,6 +258,8 @@ const setNewLevel = () => {
     setDifficulty(gameLevelData,gameStatus)
     setCardGrid(gameStatus.cardsInGame);
     setEventFlipCard();
+    const displayLevel = gameStatus.currentLevel + 1;
+    $(".levelNum").text(displayLevel);
     updateCardsRemain();
 }
 
