@@ -1,126 +1,126 @@
 const cardsAll = [
                     {
-                        id: "cannotDie",
+                        id: "card0",
                         imgPath: "img/cannotDie.gif"
                     },
                     {
-                        id: "soulsphere",
+                        id: "card1",
                         imgPath: "img/soulsphere.gif"
                     },
                     {
-                        id: "invisible",
+                        id: "card2",
                         imgPath: "img/invisible.gif"
                     },
                     {
-                        id: "iconOfSin",
+                        id: "card3",
                         imgPath: "img/iconOfSin.png"
                     },
                     {
-                        id: "monster4",
+                        id: "card4",
                         imgPath: "img/cannotDie.gif"
                     },
                     {
-                        id: "monster5",
+                        id: "card5",
                         imgPath: "img/soulsphere.gif"
                     },
                     {
-                        id: "monster6",
+                        id: "card6",
                         imgPath: "img/invisible.gif"
                     },
                     {
-                        id: "monster7",
+                        id: "card7",
                         imgPath: "img/iconOfSin.png"
                     },
                     {
-                        id: "monster8",
+                        id: "card8",
                         imgPath: "img/cannotDie.gif"
                     },
                     {
-                        id: "monster9",
+                        id: "card9",
                         imgPath: "img/soulsphere.gif"
                     },
                     {
-                        id: "monster10",
+                        id: "card10",
                         imgPath: "img/invisible.gif"
                     },
                     {
-                        id: "monster11",
+                        id: "card11",
                         imgPath: "img/iconOfSin.png"
                     },
                     {
-                        id: "monster12",
+                        id: "card12",
                         imgPath: "img/cannotDie.gif"
                     },
                     {
-                        id: "monster13",
+                        id: "card13",
                         imgPath: "img/soulsphere.gif"
                     },
                     {
-                        id: "monster14",
+                        id: "card14",
                         imgPath: "img/invisible.gif"
                     },
                     {
-                        id: "monster15",
+                        id: "card15",
                         imgPath: "img/iconOfSin.png"
                     },
                     {
-                        id: "monster16",
+                        id: "card16",
                         imgPath: "img/cannotDie.gif"
                     },
                     {
-                        id: "monster17",
+                        id: "card17",
                         imgPath: "img/soulsphere.gif"
                     },
                     {
-                        id: "monster18",
+                        id: "card18",
                         imgPath: "img/invisible.gif"
                     },
                     {
-                        id: "monster19",
+                        id: "card19",
                         imgPath: "img/iconOfSin.png"
                     },
                     {
-                        id: "monster20",
+                        id: "card20",
                         imgPath: "img/cannotDie.gif"
                     },
                     {
-                        id: "monster21",
+                        id: "card21",
                         imgPath: "img/soulsphere.gif"
                     },
                     {
-                        id: "monster22",
+                        id: "card22",
                         imgPath: "img/invisible.gif"
                     },
                     {
-                        id: "monster23",
+                        id: "card23",
                         imgPath: "img/iconOfSin.png"
                     },
                     {
-                        id: "monster24",
+                        id: "card24",
                         imgPath: "img/cannotDie.gif"
                     },
                     {
-                        id: "monster25",
+                        id: "card25",
                         imgPath: "img/soulsphere.gif"
                     },
                     {
-                        id: "monster26",
+                        id: "card26",
                         imgPath: "img/invisible.gif"
                     },
                     {
-                        id: "monster27",
+                        id: "card27",
                         imgPath: "img/iconOfSin.png"
                     },
                     {
-                        id: "monster28",
+                        id: "card28",
                         imgPath: "img/cannotDie.gif"
                     },
                     {
-                        id: "monster29",
+                        id: "card29",
                         imgPath: "img/soulsphere.gif"
                     },
                     {
-                        id: "monster30",
+                        id: "card30",
                         imgPath: "img/invisible.gif"
                     }
 ]
@@ -136,7 +136,7 @@ const gameLevelData = [
                         {
                             "level": 0,
                             "numOfCards": 4,
-                            "demon": "Lesser Zombie",
+                            "demon": "Angry Bat",
                             "imgPath": ''
                         },
                         {
@@ -172,31 +172,31 @@ const gameLevelData = [
                         {
                             "level": 6,
                             "numOfCards": 25,
-                            "demon": "Cacodemon",
+                            "demon": "Cerberus",
                             "imgPath": ''
                         },
                         {
                             "level": 7,
                             "numOfCards": 30,
-                            "demon": "Pain Elemental",
+                            "demon": "Minotaur",
                             "imgPath": ''
                         },
                         {
                             "level": 8,
                             "numOfCards": 36,
-                            "demon": "Mancubus",
+                            "demon": "Wendigo",
                             "imgPath": ''
                         },
                         {
                             "level": 9,
                             "numOfCards": 40,
-                            "demon": "Baron of Hell",
+                            "demon": "Lovecraftian Horror",
                             "imgPath": ''
                         },
                         {
                             "level": 10,
                             "numOfCards": 48,
-                            "demon": "Spiderdemon",
+                            "demon": "Cthulhu",
                             "imgPath": ''
                         },
                         {
@@ -254,12 +254,18 @@ const setCardGrid = (cards) => {                    //takes in cardsInGame
     
 }
 
+const updateDemon = (level) => {
+    const $demon = $(".demon");
+    $demon.children(".text").text(gameLevelData[level].demon);
+}
+
 const setNewLevel = () => {
     setDifficulty(gameLevelData,gameStatus)
     setCardGrid(gameStatus.cardsInGame);
     setEventFlipCard();
     const displayLevel = gameStatus.currentLevel + 1;
     $(".levelNum").text(displayLevel);
+    updateDemon(gameStatus.currentLevel);
     updateCardsRemain();
 }
 
@@ -345,8 +351,6 @@ const endGameCheck = () => {
     }
 
 }
-
-
 
 const updateCardsRemain = () => {
     const numCardsLeft = $(".display").children().length;

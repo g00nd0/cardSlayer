@@ -46,7 +46,13 @@ body {
     align-items: center;
 }
 
-#intro > .text {
+/* #intro > .text {
+    width: 75%;
+    font-size: larger;
+    
+} */
+
+.text {
     width: 75%;
     font-size: larger;
     
