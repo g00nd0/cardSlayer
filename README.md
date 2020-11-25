@@ -1,6 +1,5 @@
 # CardSlayer
-Card Memory Game, but in Doom
-
+Eliminate Demons and ghosts by flipping cards
 ## Content Page
   * [Description](#description)
   * [Objectives](#objectives)
