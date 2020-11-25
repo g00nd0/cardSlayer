@@ -1,5 +1,3 @@
-const cardTest = ["a","b","c","d"];
-
 const cardsAll = [
                     {
                         id: "cannotDie",
@@ -367,11 +365,7 @@ const setEventFlipCard = () => {
         
     });
 }
-// const setup = () => {
-//     // $cardDisplay.on("click", flipCard()); to flip card when user clicks
-//     // $instructions.on("click", showInstructions);
-//     // $quit.on("click", quit);
-// }
+
 
 const setup = () => {
     setDifficulty(gameLevelData,gameStatus)
@@ -393,6 +387,9 @@ const setup = () => {
 const render = () => {
     // playerHealth();
     // setInterval(playerHealth(), 1000);
+    $('#intro').hide();
+    $('#game').show();
+    $('#gameOver').hide();
     }
     
 $(() => {
@@ -400,6 +397,11 @@ $(() => {
     render();
 });
 
+// const setup = () => {
+//     // $cardDisplay.on("click", flipCard()); to flip card when user clicks
+//     // $instructions.on("click", showInstructions);
+//     // $quit.on("click", quit);
+// }
 
 // test parameters for fns:
 //userChoice(0,3)
