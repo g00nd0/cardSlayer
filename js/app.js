@@ -195,7 +195,7 @@ const gameLevelData = [
                         },
                         {
                             "level": 10,
-                            "numOfCards": 49,
+                            "numOfCards": 48,
                             "demon": "Spiderdemon",
                             "imgPath": ''
                         },
@@ -338,7 +338,7 @@ const cardsWon = (chosenCardsArr, chosenIndexArr) => {
 const endGameCheck = () => {
     if (gameStatus.health <= 0) {
         gameStatus.gameOverStatus = true; // need an end game page
-        $('body').children().hide();
+        $('.container').hide();
         $('#gameOver').show();
     }
 
@@ -378,14 +378,14 @@ const setEventFlipCard = () => {
 
 const startGameButton = () => {
     $('#startButton').on("click", () => {
-        $('body').children().hide();
+        $('.container').hide();
         $('#game').show();
     })
 }
 
 const retryGameButton = () => {
     $('#retryButton').on("click", () => {
-        $('body').children().hide();
+        $('.container').hide();
         $('.display').children().remove();
         gameStatus.currentLevel = 0;
         setNewLevel();
@@ -395,7 +395,7 @@ const retryGameButton = () => {
 
 const quitGameButton = () => {
     $('#quitButton').on("click", () => {
-        $('body').children().hide();
+        $('.container').hide();
         $('#intro').show();
     })
 }
@@ -408,9 +408,7 @@ const setup = () => {
 }
 
 const render = () => {
-    // playerHealth();
-    // setInterval(playerHealth(), 1000);
-    $('body').children().hide();
+    $('.container').hide();
     $('#intro').show();
     }
     

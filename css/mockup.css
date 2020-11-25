@@ -3,6 +3,7 @@ body {
     background-image: url(../img/background.jpg);
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     
     
@@ -11,6 +12,23 @@ body {
 /* .title {
     font-size: 50;
 } */
+
+.header {
+    width: 1000px;
+    height: 150px;
+    padding: 10px;
+    margin: 0%;
+    /* border: 5px white solid; */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.header > img {
+    width: 1000px;
+    height: 180px;
+    /* padding-top: 0%; */
+}
 
 .container {
     width: 1000px;
