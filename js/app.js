@@ -263,11 +263,6 @@ const setNewLevel = () => {
 const nextLevel = () => {
     gameStatus.currentLevel++;
     setNewLevel();
-    // setDifficulty(gameLevelData,gameStatus)
-    // setCardGrid(gameStatus.cardsInGame);
-    // setEventFlipCard();
-    
-    console.log('this runs')
 }
 
 const flipCard = (id) => {
@@ -334,7 +329,6 @@ const cardsWon = (chosenCardsArr, chosenIndexArr) => {
 
         if(updateCardsRemain() === 0) {
             nextLevel();
-            
         }
     }, 1000);
 
@@ -389,7 +383,6 @@ const startGameButton = () => {
 const setup = () => {
     startGameButton();
     setNewLevel();  
-    // updateCardsRemain();
 }
 
 const render = () => {
