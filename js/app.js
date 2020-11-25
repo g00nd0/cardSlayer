@@ -338,9 +338,13 @@ const cardsWon = (chosenCardsArr, chosenIndexArr) => {
 const endGameCheck = () => {
     if (gameStatus.health <= 0) {
         gameStatus.gameOverStatus = true; // need an end game page
+        $('body').children().hide();
+        $('#gameOver').show();
     }
 
 }
+
+
 
 const updateCardsRemain = () => {
     const numCardsLeft = $(".display").children().length;
@@ -374,13 +378,32 @@ const setEventFlipCard = () => {
 
 const startGameButton = () => {
     $('#startButton').on("click", () => {
-        $('#intro').hide();
+        $('body').children().hide();
         $('#game').show();
+    })
+}
+
+const retryGameButton = () => {
+    $('#retryButton').on("click", () => {
+        $('body').children().hide();
+        $('.display').children().remove();
+        gameStatus.currentLevel = 0;
+        setNewLevel();
+        $('#game').show();
+    })
+}
+
+const quitGameButton = () => {
+    $('#quitButton').on("click", () => {
+        $('body').children().hide();
+        $('#intro').show();
     })
 }
 
 const setup = () => {
     startGameButton();
+    retryGameButton();
+    quitGameButton();
     setNewLevel();  
 }
 

@@ -38,7 +38,7 @@ body {
     font-weight: bold;
 }
 
-#intro > .button {
+.button {
     width: 20%;
     height: 10%;
     font-size: larger;
