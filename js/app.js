@@ -122,6 +122,10 @@ const cardsAll = [
                     {
                         id: "card30",
                         imgPath: "img/invisible.gif"
+                    },
+                    {
+                        id: "card31",
+                        imgPath: "img/invisible.gif"
                     }
 ]
 
@@ -137,13 +141,13 @@ const gameLevelData = [
                             "level": 0,
                             "numOfCards": 4,
                             "demon": "Angry Bat",
-                            "imgPath": ''
+                            "imgPath": 'img/bat.gif'
                         },
                         {
                             "level": 1,
                             "numOfCards": 6,
                             "demon": "Zombie",
-                            "imgPath": ''
+                            "imgPath": 'img/zombieman.gif'
                         },
                         {
                             "level": 2,
@@ -256,10 +260,13 @@ const setCardGrid = (cards) => {                    //takes in cardsInGame
 
 const updateDemon = (level) => {
     const $demon = $(".demon");
-    $demon.children(".text").text(gameLevelData[level].demon);
+    const levelData = gameLevelData[level];
+    $demon.children(".text").text(levelData.demon);
+    $demon.children(".demonImg").children(".mugshot").attr("src",levelData.imgPath);
 }
 
 const setNewLevel = () => {
+    gameStatus.gameOverStatus = false;
     setDifficulty(gameLevelData,gameStatus)
     setCardGrid(gameStatus.cardsInGame);
     setEventFlipCard();
@@ -281,9 +288,7 @@ const flipCard = (id) => {
     const chosenCards = gameStatus.chosenCards;
     const chosenIndex = gameStatus.chosenIndex;
     let imgPath;  // set imgPath as the path of the card image
-    let whichCard;                  // refers to the card object from cardsAll array
-
-    // "url(" + cardsAll[i].imgPath + ")"
+    let whichCard;    // refers to the card object from cardsAll array
 
     for ( let i = 0; i < cardsAll.length; i++) {
         if ( cardName === cardsAll[i].id ) {
@@ -385,6 +390,7 @@ const setEventFlipCard = () => {
 const startGameButton = () => {
     $('#startButton').on("click", () => {
         $('.container').hide();
+        setNewLevel(); 
         $('#game').show();
     })
 }
@@ -402,6 +408,9 @@ const retryGameButton = () => {
 const quitGameButton = () => {
     $('#quitButton').on("click", () => {
         $('.container').hide();
+        $('.display').children().remove();
+        gameStatus.currentLevel = 0;
+        gameStatus.gameOverStatus = false;
         $('#intro').show();
     })
 }
@@ -410,7 +419,7 @@ const setup = () => {
     startGameButton();
     retryGameButton();
     quitGameButton();
-    setNewLevel();  
+     
 }
 
 const render = () => {
@@ -422,12 +431,6 @@ $(() => {
     setup();
     render();
 });
-
-// const setup = () => {
-//     // $cardDisplay.on("click", flipCard()); to flip card when user clicks
-//     // $instructions.on("click", showInstructions);
-//     // $quit.on("click", quit);
-// }
 
 // test parameters for fns:
 //userChoice(0,3)
@@ -445,8 +448,3 @@ $(() => {
 // [DONE]cardsPaired() // cards won/paired are stored here
 // [DONE] flipCard() // flip card to front or back when user chooses card, or when both cards revealed
 // [DONE] createGrid // need to dynamically create card grid in CSS
-
-// test if jQuery is linked correctly
-// if (typeof $ == 'undefined'){
-//   console.log('oops! I still have to link my jQuery properly!');
-// } else {console.log('I did it! I linked jQuery and this js file properly!')};
