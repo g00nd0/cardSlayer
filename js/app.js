@@ -218,6 +218,8 @@ const gameStatus = {
                     gameOverStatus: false
 }
 
+
+
 const setDifficulty = (gameData, status) => {
     const level = status.currentLevel;                 // get current level of game
     const setLevel = gameData[level];                     //  select level data from current level (i.e. num of cards)
@@ -254,7 +256,6 @@ const setCardGrid = (cards) => {                    //takes in cardsInGame
         const $newCard = $('<div>').addClass('card').attr("id",i).attr("alt",cardTitle);
         $cardDisplay.append($newCard);
     }
-    
     
 }
 
@@ -366,10 +367,17 @@ const setEventFlipCard = () => {
     });
 }
 
+const startGameButton = () => {
+    $('#startButton').on("click", () => {
+        $('#intro').hide();
+        $('#game').show();
+    })
+}
 
 const setup = () => {
     setDifficulty(gameLevelData,gameStatus)
     setCardGrid(cardsInGame);
+    startGameButton();
     setEventFlipCard();   
     // updateCardsRemain();
      
@@ -387,8 +395,9 @@ const setup = () => {
 const render = () => {
     // playerHealth();
     // setInterval(playerHealth(), 1000);
-    $('#intro').hide();
-    $('#game').show();
+    //$('body').children().hide
+    $('#intro').show();
+    $('#game').hide();
     $('#gameOver').hide();
     }
     
