@@ -132,10 +132,10 @@ const cardsAll = [
 // imgPath: (path of image)
 // specialFx: (for card power ups later in game)
 
-let cardsInGame = [];
-let chosenCards = [];
-let chosenIndex = [];
-let health = 100;
+//let cardsInGame = [];
+//let chosenCards = [];
+//let chosenIndex = [];
+// let health = 100;
 let numOfChosen = 0;
 
 const gameLevelData = [
@@ -215,26 +215,28 @@ const gameLevelData = [
 
 const gameStatus = {
                     currentLevel: 0,
-                    gameOverStatus: false
+                    gameOverStatus: false,
+                    cardsInGame: [],
+                    chosenCards: [],
+                    chosenIndex: [],
+                    health: 100
+                    // numOfChosen: 0
+                    
 }
-
-
 
 const setDifficulty = (gameData, status) => {
     const level = status.currentLevel;                 // get current level of game
     const setLevel = gameData[level];                     //  select level data from current level (i.e. num of cards)
     let newCards = []; 
 
-    const $healthBar = $(".healthBar");
-    health = 100;
-    $healthBar.text(health + "%");
+    updatePlayerHealth(100);
    
     for (let i = 0; i < (setLevel.numOfCards/2); i++) {    // new cards in temp array
         newCards[i] = cardsAll[i];
     }
 
     newCards = newCards.concat(newCards);           // each card will have a copy of itself
-    cardsInGame = cardArrayShuffle(newCards);       // shuffle order of new cards and save to cardsInGame
+    status.cardsInGame = cardArrayShuffle(newCards);       // shuffle order of new cards and save to cardsInGame
     
 }
 
@@ -262,7 +264,7 @@ const setCardGrid = (cards) => {                    //takes in cardsInGame
 const nextLevel = () => {
     gameStatus.currentLevel++;
     setDifficulty(gameLevelData,gameStatus)
-    setCardGrid(cardsInGame);
+    setCardGrid(gameStatus.cardsInGame);
     setEventFlipCard();
     
     console.log('this runs')
@@ -272,6 +274,8 @@ const flipCard = (id) => {
     const idNum = "#" + id;         // id given in HTML tag
     const $chooseCard = $(idNum);   
     const cardName = $chooseCard.attr("alt"); // get the alt attr in given id's HTML tag
+    const chosenCards = gameStatus.chosenCards;
+    const chosenIndex = gameStatus.chosenIndex;
     let imgPath;  // set imgPath as the path of the card image
     let whichCard;                  // refers to the card object from cardsAll array
 
@@ -291,39 +295,40 @@ const flipCard = (id) => {
     } else {
         chosenCards[1] = whichCard;
         chosenIndex[1] = idNum;
-        cardsChosenMatch(); 
+        cardsChosenMatch(chosenCards, chosenIndex); 
     }
     
 }
 
-const cardsChosenMatch = () => {
-    if (chosenCards[0] === chosenCards[1]) {
-        cardsWon();
+const cardsChosenMatch = (chosenCardsArr, chosenIndexArr) => {
+    
+    if (chosenCardsArr[0] === chosenCardsArr[1]) {
+        cardsWon(chosenCardsArr, chosenIndexArr);
     } else {
-        flipCardReset();
+        flipCardReset(chosenCardsArr, chosenIndexArr);
     }
 }
 
-const flipCardReset = () => {
+const flipCardReset = (chosenCardsArr, chosenIndexArr) => {
     setTimeout(() => {
         $(".card").css("background-image","url(img/card-blank-doomslayer-logo.png)");
         
     }, 500)
-    chosenCards = [];
+    gameStatus.chosenCards = [];
     lessPlayerHealth();
     endGameCheck();
 }
 
-const cardsWon = () => {
+const cardsWon = (chosenCardsArr, chosenIndexArr) => {
     setTimeout(() => {              // after 500ms, change face to game win face img
-        for (let i = 0; i < chosenIndex.length; i++) {
-            $(chosenIndex[i]).css("background-image","url(img/winFace.png)");
+        for (let i = 0; i < chosenIndexArr.length; i++) {
+            $(chosenIndexArr[i]).css("background-image","url(img/winFace.png)");
         }
     }, 500)
     
     setTimeout(() => {              //after 1000ms, remove won cards
-        $(chosenIndex[0]).remove();
-        $(chosenIndex[1]).remove();
+        $(chosenIndexArr[0]).remove();
+        $(chosenIndexArr[1]).remove();
         console.log("in timeout, there are "+ updateCardsRemain());
         $('.cardsRemain').children('span').text(updateCardsRemain());
 
@@ -333,11 +338,11 @@ const cardsWon = () => {
         }
     }, 1000);
 
-    chosenCards = [];
+    gameStatus.chosenCards = [];
 }
 
 const endGameCheck = () => {
-    if (health <= 0) {
+    if (gameStatus.health <= 0) {
         gameStatus.gameOverStatus = true; // need an end game page
     }
 
@@ -348,12 +353,18 @@ const updateCardsRemain = () => {
     return numCardsLeft;
 }
 
-const lessPlayerHealth = () => {
+const updatePlayerHealth = (healthLeft) => {
     const $healthBar = $(".healthBar");
+    gameStatus.health = healthLeft;
+    $healthBar.text(gameStatus.health + "%");
+}
+
+const lessPlayerHealth = () => {
     const currentLevel = gameStatus.currentLevel;
     const lessMultiplier = gameLevelData[currentLevel].numOfCards;
+    let health = gameStatus.health;
     health -= Math.round(100 / lessMultiplier);
-    $healthBar.text(health + "%");
+    updatePlayerHealth(health);
 }
 
 const setEventFlipCard = () => {
@@ -376,7 +387,7 @@ const startGameButton = () => {
 
 const setup = () => {
     setDifficulty(gameLevelData,gameStatus)
-    setCardGrid(cardsInGame);
+    setCardGrid(gameStatus.cardsInGame);
     startGameButton();
     setEventFlipCard();   
     // updateCardsRemain();
