@@ -253,6 +253,7 @@ const setCardGrid = (cards) => {                    //takes in cardsInGame
     }
     
 }
+
 const setNewLevel = () => {
     setDifficulty(gameLevelData,gameStatus)
     setCardGrid(gameStatus.cardsInGame);
@@ -324,7 +325,6 @@ const cardsWon = (chosenCardsArr, chosenIndexArr) => {
     setTimeout(() => {              //after 1000ms, remove won cards
         $(chosenIndexArr[0]).remove();
         $(chosenIndexArr[1]).remove();
-        console.log("in timeout, there are "+ updateCardsRemain());
         $('.cardsRemain').children('span').text(updateCardsRemain());
 
         if(updateCardsRemain() === 0) {
@@ -357,9 +357,8 @@ const updatePlayerHealth = (healthLeft) => {
 const lessPlayerHealth = () => {
     const currentLevel = gameStatus.currentLevel;
     const lessMultiplier = gameLevelData[currentLevel].numOfCards;
-    let health = gameStatus.health;
-    health -= Math.round(100 / lessMultiplier);
-    updatePlayerHealth(health);
+    const newHealth = gameStatus.health - Math.round(100 / lessMultiplier);
+    updatePlayerHealth(newHealth);
 }
 
 const setEventFlipCard = () => {
