@@ -282,8 +282,8 @@ const nextLevel = () => {
 }
 
 const flipCard = (id) => {
-    const idNum = "#" + id;         // id given in HTML tag
-    const $chooseCard = $(idNum);   
+    const cardIdOnGrid = "#" + id;         // id given in HTML tag
+    const $chooseCard = $(cardIdOnGrid);   
     const cardName = $chooseCard.attr("alt"); // get the alt attr in given id's HTML tag
     const chosenCards = gameStatus.chosenCards;
     const chosenIndex = gameStatus.chosenIndex;
@@ -297,20 +297,21 @@ const flipCard = (id) => {
         }
     }
     $chooseCard.css("background-image",imgPath);
+    removeEventFlipCard(cardIdOnGrid);
     const isFirstCard = (chosenCards.length === 0);
     if (isFirstCard){
         chosenCards[0] = whichCard;
-        chosenIndex[0] = idNum;
+        chosenIndex[0] = cardIdOnGrid;
     } else {
         chosenCards[1] = whichCard;
-        chosenIndex[1] = idNum;
+        chosenIndex[1] = cardIdOnGrid;
         cardsChosenMatch(chosenCards, chosenIndex); 
     }
     
 }
 
 const cardsChosenMatch = (chosenCardsArr, chosenIndexArr) => {
-    
+    removeEventFlipCard();
     if (chosenCardsArr[0] === chosenCardsArr[1]) {
         cardsWon(chosenCardsArr, chosenIndexArr);
     } else {
@@ -321,8 +322,9 @@ const cardsChosenMatch = (chosenCardsArr, chosenIndexArr) => {
 const flipCardReset = (chosenCardsArr, chosenIndexArr) => {
     setTimeout(() => {
         $(".card").css("background-image","url(img/card-blank-doomslayer-logo.png)");
-        
+        setEventFlipCard();
     }, 500)
+    
     gameStatus.chosenCards = [];
     lessPlayerHealth();
     endGameCheck();
@@ -333,19 +335,21 @@ const cardsWon = (chosenCardsArr, chosenIndexArr) => {
         for (let i = 0; i < chosenIndexArr.length; i++) {
             $(chosenIndexArr[i]).css("background-image","url(img/winFace.png)");
         }
+        
     }, 500)
     
     setTimeout(() => {              //after 1000ms, remove won cards
         $(chosenIndexArr[0]).remove();
         $(chosenIndexArr[1]).remove();
         $('.cardsRemain').children('span').text(updateCardsRemain());
-
+        setEventFlipCard();
         if(updateCardsRemain() === 0) {
             nextLevel();
         }
-    }, 1000);
+    }, 900);
 
     gameStatus.chosenCards = [];
+    
 }
 
 const endGameCheck = () => {
@@ -380,11 +384,16 @@ const setEventFlipCard = () => {
     $(".display").children().on("click", () => {
         flipCard(event.target.id);
         // console.log(event.target.id)
-        if (gameStatus.gameOverStatus === true){
-            console.log("you lose")
-        }
+        // if (gameStatus.gameOverStatus === true){
+        //     console.log("you lose")
+        // }
         
     });
+}
+
+const removeEventFlipCard = (cardIdOnGrid) => {
+    $(".display").children(cardIdOnGrid).off("click");
+
 }
 
 const startGameButton = () => {
