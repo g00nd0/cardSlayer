@@ -406,10 +406,8 @@ const setup = () => {
 const render = () => {
     // playerHealth();
     // setInterval(playerHealth(), 1000);
-    //$('body').children().hide
+    $('body').children().hide();
     $('#intro').show();
-    $('#game').hide();
-    $('#gameOver').hide();
     }
     
 $(() => {
