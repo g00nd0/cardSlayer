@@ -371,6 +371,7 @@ const updatePlayerHealth = (healthLeft) => {
     const $healthBar = $(".healthBar");
     gameStatus.health = healthLeft;
     $healthBar.text(gameStatus.health + "%");
+    $healthBar.css("width",(5*healthLeft))
 }
 
 const lessPlayerHealth = () => {
