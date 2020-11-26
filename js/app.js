@@ -390,23 +390,30 @@ const flipCardReset = (chosenCardsArr, chosenIndexArr) => {
 const usePowerUp = (chosenCardsArr) => {
     switch(chosenCardsArr[0].power){
         case "Shotgun":
-            powerUpShotgun(chosenCardsArr); 
+            powerUpRemove(chosenCardsArr,chosenCardsArr[0].power); 
             break;
         case "Clairvoyance":
             powerUpReveal();
             break;
         case "R.P.G. (Ridiculously overPowered Gun)":
-            powerUpRpg(chosenCardsArr);
+            powerUpRemove(chosenCardsArr,chosenCardsArr[0].power);
             break;
         default:
             return ("No power ups.");
     }
 }
 
-const powerUpShotgun = (chosenCardsArr) => {
-    // remove 2 pairs of matching cards from play (ie. remove 4 cards)
+const powerUpRemove = (chosenCardsArr,powerUpType) => {
     const numCardsLeft = $('.display').children().length;
-    for (let i = 0; i < 2; i++){
+    let numOfRemoves;
+
+    if (powerUpType === "Shotgun"){
+        numOfRemoves = 2;
+    } else if (powerUpType === "R.P.G. (Ridiculously overPowered Gun)") {
+        numOfRemoves = 6;
+    }
+
+    for (let i = 0; i < numOfRemoves; i++){
         const randomIndex = Math.floor(Math.random()*numCardsLeft);
         const indexInJQuery = ":eq("+ randomIndex + ")";
         const cardId = $('.display').children(indexInJQuery).attr("alt");
@@ -418,22 +425,32 @@ const powerUpShotgun = (chosenCardsArr) => {
         }
         updateCardsRemain();
     }
-    // for loop, run for two loops
-    // random num (between 0 and length of remaining cards)
-    // insert ranNum into jQuery, $display.children(ranNum).attr("alt")
-    // if new card === chosenCardsArr[0].id
-    //  i--; // redo loop, because we want to exclude shotgun card
-    // tempString = "[alt=" + cardId + "]"
-    // $(tempString).remove();
 }
+
+// const powerUpShotgun = (chosenCardsArr) => {
+//     // remove 2 pairs of matching cards from play (ie. remove 4 cards)
+//     const numCardsLeft = $('.display').children().length;
+//     for (let i = 0; i < 2; i++){
+//         const randomIndex = Math.floor(Math.random()*numCardsLeft);
+//         const indexInJQuery = ":eq("+ randomIndex + ")";
+//         const cardId = $('.display').children(indexInJQuery).attr("alt");
+//         if (cardId === chosenCardsArr[0].id) {
+//             i--; // redo iteration, because we want to exclude shotgun card
+//         } else {
+//             const cardAlt = "[alt=" + cardId + "]";
+//             $(cardAlt).remove();
+//         }
+//         updateCardsRemain();
+//     }
+// }
 
 const powerUpReveal = (chosenCardsArr) => {
     // reveal all cards for 2000ms
 }
 
-const powerUpRpg = (chosenCardsArr) => {
-    // remove 6 pairs of matching cards (remove 12 cards total)
-}
+// const powerUpRpg = (chosenCardsArr) => {
+//     // remove 6 pairs of matching cards (remove 12 cards total)
+// }
 
 const cardsWon = (chosenCardsArr, chosenIndexArr) => {
     // if(chosenCardsArr[0].type === "powerUp") {
