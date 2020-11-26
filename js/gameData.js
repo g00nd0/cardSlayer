@@ -210,7 +210,7 @@ const gameLevelData = [
             "level": 2,
             "numOfCards": 8,
             "demon": "Bigger, Uglier Zombie",
-            "imgPath": ''
+            "imgPath": 'img/zombie.gif'
         },
         {
             "level": 3,

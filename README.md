@@ -1,5 +1,5 @@
 # CardSlayer
-Eliminate Demons and ghosts by flipping cards
+Eliminate demons and ghosts by flipping cards
 ## Content Page
   * [Description](#description)
   * [Objectives](#objectives)
@@ -39,6 +39,9 @@ Eliminate all the ghosts and demons (Meaning reveal all card pairs)
 ## App
 
 ## Features
+1. Up to 12 sinister apparitions to do combat with.
+2. Difficulty increases with each victory every round.
+3. Power ups scattered amongst the cards to aid you in combat.
 
 ## Tech stacks used
 HTML, CSS, Javascript. 

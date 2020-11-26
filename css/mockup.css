@@ -1,6 +1,7 @@
 body {
     background-color: transparent;
     background-image: url(../img/background.jpg);
+    background-size: cover;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -9,12 +10,15 @@ body {
     
 }
 
-/* .title {
-    font-size: 50;
-} */
+#title {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    background-color: antiquewhite;
+    opacity: 0.5;
+}
 
 .header {
-    width: 1000px;
+    width:51.5%;
     height: 150px;
     padding: 10px;
     margin: 0%;
@@ -25,7 +29,7 @@ body {
 }
 
 .header > img {
-    width: 1000px;
+    width: 100%;
     height: 180px;
     padding-top: 1%;
 }
@@ -53,7 +57,7 @@ body {
 } */
 
 .text {
-    width: 75%;
+    width: 80%;
     font-size: larger;
     
 }
@@ -79,6 +83,7 @@ body {
     width: 100%;
     height: 15%;
     background-color: green;
+    opacity: 0.7;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -88,12 +93,18 @@ body {
 
 .level {
     text-align: center;
+    margin-top: 1.5%;
     padding-right: 50px;
 }
 
 .levelNum {
     text-align: center;
     font-size: 40;
+}
+
+.health {
+    margin-left: 2%;
+    margin-top: .5%;
 }
 
 .healthBar {
@@ -128,7 +139,7 @@ body {
     width: 70px;
     height: 70px;
     border: 1px solid grey;
-    background-image: url(../img/card-blank-doomslayer-logo.png);
+    background-image: url(../img/card-back.jpg);
     background-size: 70px;
     /* margin? */
     /* background-color: white; */
@@ -155,7 +166,20 @@ body {
 .menu {
     height: 10%;
     background-color: darkblue;
+    opacity: .9;
+    font-size: large;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.menu > button {
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 50%;
+    width: 20%;
+}
+
 
 #gameOver {
     display: flex;

@@ -97,7 +97,7 @@ const cardsChosenMatch = (chosenCardsArr, chosenIndexArr) => {
 
 const flipCardReset = (chosenCardsArr, chosenIndexArr) => {
     setTimeout(() => {
-        $(".card").css("background-image","url(img/card-blank-doomslayer-logo.png)");
+        $(".card").css("background-image","url(img/card-back.jpg)");
         setEventFlipCard();
     }, 500)
     

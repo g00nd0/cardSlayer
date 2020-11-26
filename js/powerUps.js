@@ -57,6 +57,6 @@ const powerUpReveal = () => {  // reveal all cards for 3000ms
     }
 
     setTimeout(() => {
-        $(".display").children().css("background-image","url(img/card-blank-doomslayer-logo.png)");
+        $(".display").children().css("background-image","url(img/card-back.jpg)");
         }, 3000)
 }
