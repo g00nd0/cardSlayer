@@ -387,7 +387,60 @@ const flipCardReset = (chosenCardsArr, chosenIndexArr) => {
     endGameCheck();
 }
 
+const usePowerUp = (chosenCardsArr) => {
+    switch(chosenCardsArr[0].power){
+        case "Shotgun":
+            powerUpShotgun(chosenCardsArr); 
+            break;
+        case "Clairvoyance":
+            powerUpReveal();
+            break;
+        case "R.P.G. (Ridiculously overPowered Gun)":
+            powerUpRpg();
+            break;
+        default:
+            return ("No power ups.");
+    }
+}
+
+const powerUpShotgun = (chosenCardsArr) => {
+    // remove 2 pairs of matching cards from play (ie. remove 4 cards)
+    const numCardsLeft = $('.display').children().length;
+    for (let i = 0; i < 2; i++){
+        const randomIndex = Math.floor(Math.random()*numCardsLeft);
+        const indexInJQuery = ":eq("+ randomIndex + ")";
+        const cardId = $('.display').children(indexInJQuery).attr("alt");
+        if (cardId === chosenCardsArr[0].id) {
+            i--; // redo iteration, because we want to exclude shotgun card
+        } else {
+            const cardAlt = "[alt=" + cardId + "]";
+            $(cardAlt).remove();
+        }
+        updateCardsRemain();
+    }
+    // for loop, run for two loops
+    // random num (between 0 and length of remaining cards)
+    // insert ranNum into jQuery, $display.children(ranNum).attr("alt")
+    // if new card === chosenCardsArr[0].id
+    //  i--; // redo loop, because we want to exclude shotgun card
+    // tempString = "[alt=" + cardId + "]"
+    // $(tempString).remove();
+}
+
+const powerUpReveal = (chosenCardsArr) => {
+    // reveal all cards for 2000ms
+}
+
+const powerUpRpg = (chosenCardsArr) => {
+    // remove 6 pairs of matching cards (remove 12 cards total)
+}
+
 const cardsWon = (chosenCardsArr, chosenIndexArr) => {
+    // if(chosenCardsArr[0].type === "powerUp") {
+    //     usePowerUp(chosenCardsArr);
+    // }
+    
+    
     setTimeout(() => {              // after 500ms, change face to game win face img
         for (let i = 0; i < chosenIndexArr.length; i++) {
             $(chosenIndexArr[i]).css("background-image","url(img/winFace.png)");
@@ -398,7 +451,11 @@ const cardsWon = (chosenCardsArr, chosenIndexArr) => {
     setTimeout(() => {              //after 1000ms, remove won cards
         $(chosenIndexArr[0]).remove();
         $(chosenIndexArr[1]).remove();
-        $('.cardsRemain').children('span').text(updateCardsRemain());
+        //$('.cardsRemain').children('span').text(updateCardsRemain());
+        if(chosenCardsArr[0].type === "powerUp") {
+            usePowerUp(chosenCardsArr);
+        }
+        updateCardsRemain();
         setEventFlipCard();
         if(updateCardsRemain() === 0) {
             nextLevel();
