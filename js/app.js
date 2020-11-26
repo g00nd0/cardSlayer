@@ -181,6 +181,7 @@ const removeEventFlipCard = (cardIdOnGrid) => {
 const startGameButton = () => {
     $('#startButton').on("click", () => {
         $('.container').hide();
+        // gameStatus.currentLevel = 11;
         setNewLevel(); 
         $('#game').show();
     })

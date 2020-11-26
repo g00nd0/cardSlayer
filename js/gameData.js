@@ -3,193 +3,193 @@ const cardsAll = [
         id: "card0",
         type: "normal",
         power: "none",
-        imgPath: "img/cannotDie.gif"
+        imgPath: "img/crosshairs.gif"
     },
     {
         id: "card1",
         type: "normal",
         power: "none",
-        imgPath: "img/soulsphere.gif"
+        imgPath: "img/SmallLockDoor.png"
     },
     {
         id: "card2",
         type: "normal",
         power: "none",
-        imgPath: "img/invisible.gif"
+        imgPath: "img/GrapplingHook.png"
     },
     {
         id: "card3",
         type: "normal",
         power: "none",
-        imgPath: "img/iconOfSin.png"
+        imgPath: "img/door1.png"
     },
     {
         id: "card4",
         type: "normal",
         power: "none",
-        imgPath: "img/cannotDie.gif"
+        imgPath: "img/door2.png"
     },
     {
         id: "card5",
         type: "normal",
         power: "none",
-        imgPath: "img/soulsphere.gif"
+        imgPath: "img/deer_skull1.jpeg"
     },
     {
         id: "card6",
         type: "normal",
         power: "none",
-        imgPath: "img/invisible.gif"
+        imgPath: "img/deer_skull2.jpeg"
     },
     {
         id: "card7",
         type: "normal",
         power: "none",
-        imgPath: "img/iconOfSin.png"
+        imgPath: "img/ghost_1.png"
     },
     {
         id: "card8",
         type: "normal",
         power: "none",
-        imgPath: "img/cannotDie.gif"
+        imgPath: "img/knot.png"
     },
     {
         id: "card9",
         type: "powerUp",
         power: "Shotgun",
-        imgPath: "img/soulsphere.gif"
+        imgPath: "img/shotgun.png"
     },
     {
         id: "card10",
         type: "normal",
         power: "none",
-        imgPath: "img/invisible.gif"
+        imgPath: "img/crow1.png"
     },
     {
         id: "card11",
         type: "normal",
         power: "none",
-        imgPath: "img/iconOfSin.png"
+        imgPath: "img/skull3.png"
     },
     {
         id: "card12",
         type: "normal",
         power: "none",
-        imgPath: "img/cannotDie.gif"
+        imgPath: "img/skull2.jpg"
     },
     {
         id: "card13",
         type: "normal",
         power: "none",
-        imgPath: "img/soulsphere.gif"
+        imgPath: "img/skull1.png"
     },
     {
         id: "card14",
         type: "normal",
         power: "none",
-        imgPath: "img/invisible.gif"
+        imgPath: "img/skull4.jpg"
     },
     {
         id: "card15",
         type: "normal",
         power: "none",
-        imgPath: "img/iconOfSin.png"
+        imgPath: "img/SpiderWeb.png"
     },
     {
         id: "card16",
         type: "normal",
         power: "none",
-        imgPath: "img/cannotDie.gif"
+        imgPath: "img/SpookyEctoplasm.png"
     },
     {
         id: "card17",
         type: "powerUp",
         power: "Clairvoyance",
-        imgPath: "img/soulsphere.gif"
+        imgPath: "img/clairvoyance.jpg"
     },
     {
         id: "card18",
         type: "normal",
         power: "none",
-        imgPath: "img/invisible.gif"
+        imgPath: "img/spookyhousesheet.png"
     },
     {
         id: "card19",
         type: "normal",
         power: "none",
-        imgPath: "img/iconOfSin.png"
+        imgPath: "img/stairs_32x32_EVENEVENMOARSHADOW.png"
     },
     {
         id: "card20",
         type: "normal",
         power: "none",
-        imgPath: "img/cannotDie.gif"
+        imgPath: "img/wishing_well.svg_.png"
     },
     {
         id: "card21",
         type: "normal",
         power: "none",
-        imgPath: "img/soulsphere.gif"
+        imgPath: "img/roaming_cultist_0.gif"
     },
     {
         id: "card22",
         type: "normal",
         power: "none",
-        imgPath: "img/invisible.gif"
+        imgPath: "img/serpent.png"
     },
     {
         id: "card23",
         type: "powerUp",
         power: "R.P.G. (Ridiculously overPowered Gun)",
-        imgPath: "img/iconOfSin.png"
+        imgPath: "img/rpg.jpg"
     },
     {
         id: "card24",
         type: "normal",
         power: "none",
-        imgPath: "img/cannotDie.gif"
+        imgPath: "img/eyebot.png"
     },
     {
         id: "card25",
         type: "normal",
         power: "none",
-        imgPath: "img/soulsphere.gif"
+        imgPath: "img/eyelander_0.png"
     },
     {
         id: "card26",
         type: "normal",
         power: "none",
-        imgPath: "img/invisible.gif"
+        imgPath: "img/bat.gif"
     },
     {
         id: "card27",
         type: "normal",
         power: "none",
-        imgPath: "img/iconOfSin.png"
+        imgPath: "img/blue-thing.png"
     },
     {
         id: "card28",
         type: "normal",
         power: "none",
-        imgPath: "img/cannotDie.gif"
+        imgPath: "img/book-cursed.jpg"
     },
     {
         id: "card29",
         type: "normal",
         power: "none",
-        imgPath: "img/soulsphere.gif"
+        imgPath: "img/crab-thing.png"
     },
     {
         id: "card30",
         type: "normal",
         power: "none",
-        imgPath: "img/invisible.gif"
+        imgPath: "img/green-thing.png"
     },
     {
         id: "card31",
         type: "normal",
         power: "none",
-        imgPath: "img/invisible.gif"
+        imgPath: "img/lovecraftian-horror.gif"
     }
 ]
 

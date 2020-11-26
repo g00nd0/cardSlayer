@@ -36,8 +36,6 @@ Eliminate all the ghosts and demons (Meaning reveal all card pairs)
 
   c. R.P.G. (Ridiculously overPowered Gun): Randomly removes 6 matching card pairs from the card grid.
 
-## App
-
 ## Features
 1. Up to 12 sinister apparitions to do combat with.
 2. Difficulty increases with each victory every round.

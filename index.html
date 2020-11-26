@@ -10,7 +10,7 @@
     <script src="js/gameData.js"></script>
     <script src="js/powerUps.js"></script>
     <script src="js/app.js"></script>
-    <link rel="stylesheet" href="css/mockup.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- change link back to style.css for project -->
     <title>CardSlayer: Slaying Demons by Flipping Cards.</title>
 </head>
@@ -21,7 +21,10 @@
         <p class="text" id="instructions"> 1. You start with 100% health at the start of the game. You lose health every time you flip 2 non-matching cards. If your health reaches zero, you're dead. <br><br>
             2. A grid of cards will be set on the screen. The size of the grid (i.e. number of cards) determines the difficulty. (or health of the demon) <br><br>
             3. Select two cards to reveal them. If the cards do not match, the cards flip back. If they match, the cards are removed from the grid, and the demon is one step closer to death. Permenantly. The demon dies when all cards have been revealed. <br><br>
-            4. Some cards have power-ups that remove cards from screen. These are:
+            4. Some cards have power-ups that remove cards from screen. These are: <br>
+            a. Shotgun: Randomly removes 2 matching card pairs from the card grid.<br>
+            b. Clairvoyance: Reveals all cards 3 seconds before being flipped back. <br>
+            c. R.P.G. (Ridiculously overPowered Gun): Randomly removes 6 matching card pairs from the card grid.
         </p>
         <p class="text" id="nudgePlayer"> Hit the button below to begin... if you dare.
         </p>
@@ -37,6 +40,7 @@
                 <div class="title">Health</div>
                 <div class="healthBar">100%</div>
             </div>
+            <div class="cardsRemain">Cards left: <span></span> </div>
             <div class="level">
                 <div class="title">LEVEL</div>
                 <div class="levelNum"></div>
@@ -45,7 +49,6 @@
         <div class="main">
             <div class="cards">
                 <div class="display"></div>
-                <div class="cardsRemain">Cards left: <span></span> </div>
             </div>
             <div class="demon">
                 
