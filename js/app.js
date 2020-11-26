@@ -427,36 +427,18 @@ const powerUpRemove = (chosenCardsArr,powerUpType) => {
     }
 }
 
-// const powerUpShotgun = (chosenCardsArr) => {
-//     // remove 2 pairs of matching cards from play (ie. remove 4 cards)
-//     const numCardsLeft = $('.display').children().length;
-//     for (let i = 0; i < 2; i++){
-//         const randomIndex = Math.floor(Math.random()*numCardsLeft);
-//         const indexInJQuery = ":eq("+ randomIndex + ")";
-//         const cardId = $('.display').children(indexInJQuery).attr("alt");
-//         if (cardId === chosenCardsArr[0].id) {
-//             i--; // redo iteration, because we want to exclude shotgun card
-//         } else {
-//             const cardAlt = "[alt=" + cardId + "]";
-//             $(cardAlt).remove();
-//         }
-//         updateCardsRemain();
-//     }
-// }
-
 const powerUpReveal = (chosenCardsArr) => {
     // reveal all cards for 2000ms
+    // for (let i = 0; i < (num of cards in grid); i++) {
+    //  flipCard(index ids of all cards) // this will flip up all cards
+    //}
+    // setTimeout(() => {
+    //  $(".display").children().css("background-image","url(img/card-blank-doomslayer-logo.png)");
+    // setEventFlipCard();
+    // }, 2000)
 }
 
-// const powerUpRpg = (chosenCardsArr) => {
-//     // remove 6 pairs of matching cards (remove 12 cards total)
-// }
-
 const cardsWon = (chosenCardsArr, chosenIndexArr) => {
-    // if(chosenCardsArr[0].type === "powerUp") {
-    //     usePowerUp(chosenCardsArr);
-    // }
-    
     
     setTimeout(() => {              // after 500ms, change face to game win face img
         for (let i = 0; i < chosenIndexArr.length; i++) {
