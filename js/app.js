@@ -187,6 +187,24 @@ const startGameButton = () => {
     })
 }
 
+const instructionsButton = () => {
+    $('#instructionButton').on("click", () => {
+        $('#game').hide();
+        $('#intro').show();
+        $('#nudgePlayer').hide();
+        $('#startButton').hide();
+        $('#backButton').show();
+    })
+}
+
+const goBackButton = () => {
+    $('#backButton').on("click", () => {
+        $('#intro').hide();
+        $('#game').show();
+    })
+    
+}
+
 const retryGameButton = () => {
     $('#retryButton').on("click", () => {
         $('.container').hide();
@@ -201,6 +219,8 @@ const quitGameButton = () => {
     $('#quitButton').on("click", () => {
         $('.container').hide();
         $('.display').children().remove();
+        $('#startButton').show();
+        $('#backButton').hide();
         gameStatus.currentLevel = 0;
         gameStatus.gameOverStatus = false;
         $('#intro').show();
@@ -208,7 +228,10 @@ const quitGameButton = () => {
 }
 
 const setup = () => {
+    $('#backButton').hide();
     startGameButton();
+    instructionsButton();
+    goBackButton();
     retryGameButton();
     quitGameButton();
      
