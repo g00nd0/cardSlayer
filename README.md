@@ -4,7 +4,6 @@ Eliminate demons and ghosts by flipping cards
   * [Description](#description)
   * [Objectives](#objectives)
   * [Gameplay](#gameplay)
-  * [App](#app)
   * [Features](#features)
   * [References](#references)
 
