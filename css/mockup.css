@@ -27,7 +27,7 @@ body {
 .header > img {
     width: 1000px;
     height: 180px;
-    /* padding-top: 0%; */
+    padding-top: 1%;
 }
 
 .container {
@@ -66,6 +66,7 @@ body {
     width: 20%;
     height: 10%;
     font-size: larger;
+    /* margin: 5%; */
 }
 
 /* #gameOver {
@@ -134,8 +135,7 @@ body {
     display: inline-block;
     color: brown;
     text-align: center;
-    
-   
+
 }
 
 .demon {
@@ -155,4 +155,20 @@ body {
 .menu {
     height: 10%;
     background-color: darkblue;
+}
+
+#gameOver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+#gameOver > .text {
+    font-size: xx-large;
+}
+
+#gameOver > .button {
+    margin: 1%;
 }
