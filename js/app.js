@@ -59,9 +59,8 @@ const nextLevel = () => {
 }
 
 const flipCard = (id) => {
-    const cardIdOnGrid = "#" + id;         // id given in HTML tag
-    const $chooseCard = $(cardIdOnGrid);   
-    const cardName = $chooseCard.attr("alt"); // get the alt attr in given id's HTML tag
+    const cardIdOnGrid = "#" + id;         // id given in HTML tag 
+    const cardName = $(cardIdOnGrid).attr("alt"); // get the alt attr in given id's HTML tag
     const chosenCards = gameStatus.chosenCards;
     const chosenIndex = gameStatus.chosenIndex;
     let imgPath;  // set imgPath as the path of the card image
@@ -73,7 +72,7 @@ const flipCard = (id) => {
             whichCard = cardsAll[i];
         }
     }
-    $chooseCard.css("background-image",imgPath);
+    $(cardIdOnGrid).css("background-image",imgPath);
     removeEventFlipCard(cardIdOnGrid);
     const isFirstCard = (chosenCards.length === 0);
     if (isFirstCard){
@@ -147,19 +146,39 @@ const powerUpRemove = (chosenCardsArr,powerUpType) => {
     }
 }
 
-const powerUpReveal = (chosenCardsArr) => {
-    // reveal all cards for 2000ms
-    // for (let i = 0; i < (num of cards in grid); i++) {
-    //  flipCard(index ids of all cards) // this will flip up all cards
-    //}
-    // setTimeout(() => {
-    //  $(".display").children().css("background-image","url(img/card-blank-doomslayer-logo.png)");
-    // setEventFlipCard();
-    // }, 2000)
+const powerUpReveal = () => {  // reveal all cards for 3000ms
+    const numCardsLeft = $(".display").children().length;
+    removeEventFlipCard();
+    for (let i = 0; i < numCardsLeft; i++) {
+        const gridIndex = ":eq(" + i + ")";
+        const cardGridId = $(".display").children(gridIndex).attr("id");
+        const cardName = $("#" + cardGridId).attr("alt")
+        let imgPath;
+        let whichCard;
+        for ( let i = 0; i < cardsAll.length; i++) {
+            if ( cardName === cardsAll[i].id ) {
+                imgPath = "url(" + cardsAll[i].imgPath + ")";
+                whichCard = cardsAll[i];
+            }
+        }
+        $("#" + cardGridId).css("background-image",imgPath);
+    }
+
+    setTimeout(() => {
+        $(".display").children().css("background-image","url(img/card-blank-doomslayer-logo.png)");
+        }, 3000)
 }
 
 const cardsWon = (chosenCardsArr, chosenIndexArr) => {
+    let cardRemoveTimeout = 1000;
     
+    if(chosenCardsArr[0].type === "powerUp") {
+        usePowerUp(chosenCardsArr);
+        if(chosenCardsArr[0].power === "Clairvoyance") {
+            cardRemoveTimeout = 3000;
+        }
+    }
+
     setTimeout(() => {              // after 500ms, change face to game win face img
         for (let i = 0; i < chosenIndexArr.length; i++) {
             $(chosenIndexArr[i]).css("background-image","url(img/winFace.png)");
@@ -170,16 +189,12 @@ const cardsWon = (chosenCardsArr, chosenIndexArr) => {
     setTimeout(() => {              //after 1000ms, remove won cards
         $(chosenIndexArr[0]).remove();
         $(chosenIndexArr[1]).remove();
-        //$('.cardsRemain').children('span').text(updateCardsRemain());
-        if(chosenCardsArr[0].type === "powerUp") {
-            usePowerUp(chosenCardsArr);
-        }
         updateCardsRemain();
         setEventFlipCard();
         if(updateCardsRemain() === 0) {
             nextLevel();
         }
-    }, 900);
+    }, cardRemoveTimeout);
 
     gameStatus.chosenCards = [];
     
@@ -227,6 +242,7 @@ const removeEventFlipCard = (cardIdOnGrid) => {
 const startGameButton = () => {
     $('#startButton').on("click", () => {
         $('.container').hide();
+        gameStatus.currentLevel = 8; //set to level for testing powerup
         setNewLevel(); 
         $('#game').show();
     })
