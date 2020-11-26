@@ -55,8 +55,8 @@ const cardsAll = [
                     },
                     {
                         id: "card9",
-                        type: "normal",
-                        power: "none",
+                        type: "powerUp",
+                        power: "Shotgun",
                         imgPath: "img/soulsphere.gif"
                     },
                     {
@@ -67,8 +67,8 @@ const cardsAll = [
                     },
                     {
                         id: "card11",
-                        type: "powerUp",
-                        power: "Shotgun",
+                        type: "normal",
+                        power: "none",
                         imgPath: "img/iconOfSin.png"
                     },
                     {
@@ -396,7 +396,7 @@ const usePowerUp = (chosenCardsArr) => {
             powerUpReveal();
             break;
         case "R.P.G. (Ridiculously overPowered Gun)":
-            powerUpRpg();
+            powerUpRpg(chosenCardsArr);
             break;
         default:
             return ("No power ups.");
