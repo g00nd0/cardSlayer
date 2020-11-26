@@ -28,7 +28,13 @@ Eliminate all the ghosts and demons (Meaning reveal all card pairs)
 1. You start with 100% health at the start of the game. You lose health every time you flip 2 non-matching cards. If your health reaches zero, you're dead.
 2. A grid of cards will be set on the screen. The size of the grid (i.e. number of cards) determines the difficulty. (or health of the demon)
 3. Select two cards to reveal them. If the cards do not match, the cards flip back. If they match, the cards are removed from the grid, and the demon is one step closer to death. Permenantly. The demon dies when all cards have been revealed.
-4. Some cards have power-ups that remove cards from screen, i.e. so less cards = end round in shorter time/kill demon faster. ( or penalty cards?, take away health)
+4. Some cards have power-ups that can aid you in your game. These are:
+
+  a. Shotgun: Randomly removes 2 matching card pairs from the card grid.
+
+  b. Clairvoyance: Reveals all cards 3 seconds before being flipped back.
+
+  c. R.P.G. (Ridiculously overPowered Gun): Randomly removes 6 matching card pairs from the card grid.
 
 ## App
 
