@@ -18,7 +18,7 @@ At the start of each level, a grid of cards will be set on screen, and each card
 
 As you progress on each level, the grid size (i.e. number of cards) increases.
 
-[Live Demo](link here)
+[Live Demo](https://pages.git.generalassemb.ly/g00nd0/cardSlayer/)
 
 ### Objectives
 Eliminate all the ghosts and demons (Meaning reveal all card pairs)

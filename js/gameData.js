@@ -203,68 +203,68 @@ const gameLevelData = [
         {
             "level": 1,
             "numOfCards": 6,
-            "demon": "Zombie",
-            "imgPath": 'img/zombieman.gif'
+            "demon": "Minion",
+            "imgPath": 'img/eyebot.png'
         },
         {
             "level": 2,
             "numOfCards": 8,
-            "demon": "Bigger, Uglier Zombie",
+            "demon": "Zombie",
             "imgPath": 'img/zombie.gif'
         },
         {
             "level": 3,
             "numOfCards": 12,
             "demon": "Lost Soul",
-            "imgPath": ''
+            "imgPath": 'img/ghost_1.png'
         },
         {
             "level": 4,
             "numOfCards": 16,
             "demon": "Restless Spirit",
-            "imgPath": ''
+            "imgPath": 'img/SpookyEctoplasm.png'
         },
         {
             "level": 5,
             "numOfCards": 20,
             "demon": "Hungry Ghost",
-            "imgPath": ''
+            "imgPath": 'img/green-thing.png'
         },
         {
             "level": 6,
             "numOfCards": 24,
             "demon": "Cerberus",
-            "imgPath": ''
+            "imgPath": 'img/cerberus.png'
         },
         {
             "level": 7,
             "numOfCards": 30,
-            "demon": "Minotaur",
-            "imgPath": ''
+            "demon": "Crab Demon",
+            "imgPath": 'img/crab-thing.png'
         },
         {
             "level": 8,
             "numOfCards": 36,
             "demon": "Wendigo",
-            "imgPath": ''
+            "imgPath": 'img/deer_skull1.jpeg'
         },
         {
             "level": 9,
             "numOfCards": 40,
             "demon": "Lovecraftian Horror",
-            "imgPath": ''
+            "imgPath": 'img/lovecraftian-horror.gif'
         },
         {
             "level": 10,
             "numOfCards": 48,
             "demon": "Cthulhu",
-            "imgPath": ''
+            "imgPath": 'img/roaming_cultist_0.gif'
         },
         {
             "level": 11,
             "numOfCards": 64,
             "demon": "Satan Himself",
-            "imgPath": ''
+            "imgPath": 'img/blue-thing.png'
         }];
 
 
