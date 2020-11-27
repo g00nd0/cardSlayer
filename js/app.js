@@ -246,20 +246,3 @@ $(() => {
     setup();
     render();
 });
-
-// test parameters for fns:
-//userChoice(0,3)
-// console.log(cardArrayShuffle(cardsInGame));
-// console.log(cardsInGame)
-// nextLevel();
-// setDifficulty(gameLevelData, gameStatus);
-// console.log(cardsInGame);
-
-
-// fn for: 
-// [DONE] cardArrayShuffle() // shuffles positions of the cards 
-// [DONE] cardsInGame() // chosen cards arranged in array
-// [DONE] cardsChosen() // 2 element array for user to choose 2 cards, clear cards after match/no match
-// [DONE]cardsPaired() // cards won/paired are stored here
-// [DONE] flipCard() // flip card to front or back when user chooses card, or when both cards revealed
-// [DONE] createGrid // need to dynamically create card grid in CSS
