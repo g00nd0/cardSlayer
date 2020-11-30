@@ -41,7 +41,7 @@ const powerUpRemove = (chosenCardsArr,powerUpType) => {
 const powerUpReveal = () => {  // reveal all cards for 3000ms
     const numCardsLeft = $(".display").children().length;
     removeEventFlipCard();
-    for (let i = 0; i < numCardsLeft; i++) {
+    for (let i = 0; i < numCardsLeft; i++) { 
         const gridIndex = ":eq(" + i + ")";
         const cardGridId = $(".display").children(gridIndex).attr("id");
         const cardName = $("#" + cardGridId).attr("alt")

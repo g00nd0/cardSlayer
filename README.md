@@ -21,7 +21,7 @@ As you progress on each level, the grid size (i.e. number of cards) increases.
 [Demo](https://pages.git.generalassemb.ly/g00nd0/cardSlayer/)
 
 ### Objectives
-Eliminate all the ghosts and demons (Meaning reveal all card pairs)
+Eliminate all the ghosts and demons. (By revealing all card pairs)
 
 ### Gameplay
 1. You start with 100% health at the start of the game. You lose health every time you flip 2 non-matching cards. If your health reaches zero, you're dead.

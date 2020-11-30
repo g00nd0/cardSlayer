@@ -106,8 +106,6 @@ const flipCardReset = (chosenCardsArr, chosenIndexArr) => {
     endGameCheck();
 }
 
-
-
 const cardsWon = (chosenCardsArr, chosenIndexArr) => {
     let cardRemoveTimeout = 1000;
     
@@ -181,7 +179,7 @@ const removeEventFlipCard = (cardIdOnGrid) => {
 const startGameButton = () => {
     $('#startButton').on("click", () => {
         $('.container').hide();
-        // gameStatus.currentLevel = 11;
+        gameStatus.currentLevel = 11;
         setNewLevel(); 
         $('#game').show();
     })
