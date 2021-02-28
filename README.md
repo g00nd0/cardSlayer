@@ -45,9 +45,9 @@ c. R.P.G. (Ridiculously overPowered Gun): Randomly removes 6 matching card pairs
 2. Difficulty increases with each victory every round.
 3. Power ups scattered amongst the cards to aid you in combat.
 
-## Tech stacks used
+## Tech stack used
 
-HTML, CSS, Javascript.
+HTML, CSS, Javascript, jQuery
 
 ## References & Sources
 
