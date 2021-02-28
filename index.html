@@ -1,75 +1,113 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <script
-  src="https://code.jquery.com/jquery-3.5.1.min.js"
-  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-  crossorigin="anonymous"></script>
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
     <script src="js/gameData.js"></script>
     <script src="js/powerUps.js"></script>
     <script src="js/app.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <!-- change link back to style.css for project -->
     <title>CardSlayer: Slaying Demons by Flipping Cards.</title>
-</head>
-<body>
-    <h1 class="header" id="title"><img src="img/cardslayer_logo2.png" alt=""></h1>
+  </head>
+  <body>
+    <h1 class="header" id="title">
+      <img src="img/cardslayer_logo2.png" alt="" />
+    </h1>
     <div class="container" id="intro">
-        <p class="text" id="description">You are the <span>CardSlayer</span> , a world-renowed demon hunter and exorcist. Enter this spooky mansion and eliminate all the demons and evil spirits that haunt these walls, before they kill you!</p>
-        <p class="text" id="instructions"> 1. You start with 100% health at the start of the game. You lose health every time you flip 2 non-matching cards. If your health reaches zero, you're dead. <br><br>
-            2. A grid of cards will be set on the screen. The size of the grid (i.e. number of cards) determines the difficulty. (or health of the demon) <br><br>
-            3. Select two cards to reveal them. If the cards do not match, the cards flip back. If they match, the cards are removed from the grid, and the demon is one step closer to death. Permenantly. The demon dies when all cards have been revealed. <br><br>
-            4. Some cards have power-ups that remove cards from screen. These are: <br>
-            a. Shotgun: Randomly removes 2 matching card pairs from the card grid.<br>
-            b. Clairvoyance: Reveals all cards 3 seconds before being flipped back. <br>
-            c. R.P.G. (Ridiculously overPowered Gun): Randomly removes 6 matching card pairs from the card grid.
-        </p>
-        <p class="text" id="nudgePlayer"> Hit the button below to begin... if you dare.
-        </p>
-        <br>
-        <button class="button" id="startButton" type="button"> Kill'em All </button>
-        <br>
-        <button class="button" id="backButton" type="button"> Go Back </button>    
+      <p class="text" id="description">
+        You are the <span>CardSlayer</span> , a world-renowed demon hunter and
+        exorcist. Enter this spooky mansion and eliminate all the demons and
+        evil spirits that haunt these walls, before they kill you!
+      </p>
+      <p class="text" id="instructions">
+        1. You start with 100% health at the start of the game. You lose health
+        every time you flip 2 non-matching cards. If your health reaches zero,
+        you're dead. <br /><br />
+        2. A grid of cards will be set on the screen. The size of the grid (i.e.
+        number of cards) determines the difficulty. (or health of the demon)
+        <br /><br />
+        3. Select two cards to reveal them. If the cards do not match, the cards
+        flip back. If they match, the cards are removed from the grid, and the
+        demon is one step closer to death. Permenantly. The demon dies when all
+        cards have been revealed. <br /><br />
+        4. Some cards have power-ups that remove cards from screen. These are:
+        <br />
+        a. Shotgun: Randomly removes 2 matching card pairs from the card
+        grid.<br />
+        b. Clairvoyance: Reveals all cards 3 seconds before being flipped back.
+        <br />
+        c. R.P.G. (Ridiculously overPowered Gun): Randomly removes 6 matching
+        card pairs from the card grid.
+      </p>
+      <p class="text" id="nudgePlayer">
+        Hit the button below to begin... if you dare.
+      </p>
+
+      <br />
+      <button class="button" id="startButton" type="button">Kill'em All</button>
+      <br />
+      <button class="button" id="backButton" type="button">Go Back</button>
+      <br />
+      <p>
+        Background Image from
+        <a
+          href="https://wallpaperaccess.com/download/scary-castle-666578"
+          title="WallpaperAccess"
+        >
+          www.wallpaperaccess.com
+        </a>
+        <br />
+        Monster & Card Images from
+        <a href="https://www.opengameart.org" title="OpenGameArt">
+          opengameart.org
+        </a>
+      </p>
     </div>
 
     <div class="container" id="game">
-        <div class="stats">
-            <div class="health"> 
-                <div class="title">Health</div>
-                <div class="healthBar">100%</div>
-            </div>
-            <div class="cardsRemain">Cards left: <span></span> </div>
-            <div class="level">
-                <div class="title">LEVEL</div>
-                <div class="levelNum"></div>
-            </div>
+      <div class="stats">
+        <div class="health">
+          <div class="title">Health</div>
+          <div class="healthBar">100%</div>
         </div>
-        <div class="main">
-            <div class="cards">
-                <div class="display"></div>
-            </div>
-            <div class="demon">
-                
-                <div class="demonImg">
-                    <img class= "mugshot" src="" alt="enemy here">
-                </div>
-                <div class="text"></div>
-            </div>
+        <div class="cardsRemain">Cards left: <span></span></div>
+        <div class="level">
+          <div class="title">LEVEL</div>
+          <div class="levelNum"></div>
         </div>
-        <div class="menu">
-            <button class="footerButton" id="instructionButton" type="button"> Instructions </button>
-            <button class="footerButton" id="quitButton" type="button"> Quit </button>
+      </div>
+      <div class="main">
+        <div class="cards">
+          <div class="display"></div>
         </div>
-    </div>
-    
-    <div class="container" id="gameOver">
-        <p class="text" id="gameOverText"> G A M E <br> O V E R </p>
-        <button class="button" type="button" id="retryButton">R E T R Y</button>
-        <button class="button" type="button" id="quitButton">Q U I T</button>
+        <div class="demon">
+          <div class="demonImg">
+            <img class="mugshot" src="" alt="enemy here" />
+          </div>
+          <div class="text"></div>
+        </div>
+      </div>
+      <div class="menu">
+        <button class="footerButton" id="instructionButton" type="button">
+          Instructions
+        </button>
+        <button class="footerButton" id="quitButton" type="button">Quit</button>
+      </div>
     </div>
 
-    
-</body>
+    <div class="container" id="gameOver">
+      <p class="text" id="gameOverText">
+        G A M E <br />
+        O V E R
+      </p>
+      <button class="button" type="button" id="retryButton">R E T R Y</button>
+      <button class="button" type="button" id="quitButton">Q U I T</button>
+    </div>
+  </body>
 </html>
